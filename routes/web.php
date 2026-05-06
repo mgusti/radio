@@ -8,6 +8,8 @@ use App\Controllers\NewsController;
 
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/news', [NewsController::class, 'index']);
+$router->get('/news/view', [NewsController::class, 'show']);
+
 
 // Admin Auth Routes
 use App\Controllers\AuthController;

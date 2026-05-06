@@ -79,6 +79,7 @@ $stmt->execute();
 $slugResult = $stmt->fetch();
 define('ADMIN_SLUG', $slugResult ? $slugResult['setting_value'] : 'admin');
 
+
 $router = new Router();
 
 // Load routes

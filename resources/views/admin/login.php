@@ -14,7 +14,7 @@
     <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-gray-900">Admin Login</h1>
-            <p class="text-gray-500 mt-2">Pulse Radio Control Panel</p>
+            <p class="text-gray-500 mt-2">Gibel fm Control Panel</p>
         </div>
         
         <?php if (isset($error)): ?>

@@ -6,6 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($title ?? 'GibelFm - The Spirit of Muaro Jambi') ?></title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,29 +37,74 @@
   </style>
 </head>
 
-<body>  
-  <header class="p-4 pb-20">
+<body class="bg-white dark:bg-[#0a0a0a] text-black dark:text-white transition-colors duration-300">  
+  <header class="p-4 pb-12 relative z-50">
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex justify-between gap-8 items-center">
         <div>
-          <a href="<?= rtrim($baseUrl, '/') ?>/" class=" font-bold text-4xl"><span class="border-b-4 border-black">Gibel</span>Fm</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/" class="font-bold text-3xl md:text-4xl">
+            <span class="border-b-4 border-black dark:border-white transition-colors">Gibel</span>Fm
+          </a>
         </div>
-        <div class="flex items-center gap-8">
-          <nav class="hidden lg:flex gap-8">
+        
+        <div class="flex items-center gap-4 lg:gap-8">
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex gap-8 font-medium">
             <?php $isNewsPage = strpos($_SERVER['REQUEST_URI'], 'news') !== false; ?>
-            <a href="<?= rtrim($baseUrl, '/') ?>/" class="hover:underline">Home</a>
-            <a href="<?= rtrim($baseUrl, '/') ?>/news" class="hover:underline">News</a>
+            <a href="<?= rtrim($baseUrl, '/') ?>/" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Home</a>
+            <a href="<?= rtrim($baseUrl, '/') ?>/news" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">News</a>
             <?php if (!$isNewsPage): ?>
-            <a href="#contact" class="hover:underline">Contact us</a>
+            <a href="#contact" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Contact us</a>
             <?php endif; ?>
           </nav>
-          <span class="hidden lg:block">|</span>
-          <div class="flex gap-4 text items-center">
-            <a href="">
-              <i class="flex items-center justify-center bg-black text-white rounded-full w-[35px] h-[35px] bi bi-search"></i>
+          
+          <span class="hidden lg:block text-gray-200 dark:text-gray-800">|</span>
+          
+          <div class="flex gap-2 md:gap-4 items-center">
+            <!-- Search Icon (Keep as is for now) -->
+            <button class="flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-full w-[35px] h-[35px] hover:scale-105 transition-transform">
+              <i class="bi bi-search"></i>
+            </button>
+            
+            <!-- Theme Toggle (Replacing Person Icon) -->
+            <button id="theme-toggle" class="flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-full w-[35px] h-[35px] hover:scale-105 transition-transform">
+              <i class="bi bi-moon-stars-fill dark:hidden"></i>
+              <i class="bi bi-sun-fill hidden dark:block"></i>
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="lg:hidden flex items-center justify-center bg-gray-100 dark:bg-white/5 text-black dark:text-white rounded-full w-[35px] h-[35px]">
+              <i class="bi bi-list text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white dark:bg-black z-[100] transform translate-x-full transition-transform duration-300 lg:hidden">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-12">
+          <a href="<?= rtrim($baseUrl, '/') ?>/" class="font-bold text-3xl">
+            <span class="border-b-4 border-black dark:border-white">Gibel</span>Fm
+          </a>
+          <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5">
+            <i class="bi bi-x-lg text-xl"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-2xl font-bold">
+          <a href="<?= rtrim($baseUrl, '/') ?>/" class="mobile-nav-link">Home</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/news" class="mobile-nav-link">News</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/#contact" class="mobile-nav-link">Contact us</a>
+        </nav>
+        <div class="mt-12 pt-12 border-t border-gray-100 dark:border-white/10">
+          <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Follow Us</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="bi bi-instagram"></i>
             </a>
-            <a href="">
-              <i class="flex items-center justify-center bg-black text-white rounded-full w-[35px] h-[35px] bi bi-person"></i>
+            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="bi bi-twitter-x"></i>
             </a>
           </div>
         </div>
@@ -63,31 +120,59 @@
       ?>
   </main>
 
-  <footer class="p-4 pb-10 pt-20" id="contact">
-    <div class="gap-8 flex justify-between mx-auto max-w-7xl w-full">
-      <div class="flex justify-center space-x-6">
-        <span class="inline-flex justify-center w-full gap-3 lg:ml-auto md:justify-start md:w-auto">
-          <a class="size-6 transition fill-black hover:text-blue-500">
-            <span class="sr-only"> twitter </span>
+  <footer class="p-4 pb-10 pt-20 border-t border-gray-100 dark:border-white/5" id="contact">
+    <div class="gap-8 flex flex-col md:flex-row justify-between mx-auto max-w-7xl w-full">
+      <div class="flex items-center space-x-6">
+        <span class="inline-flex gap-3">
+          <a href="#" class="text-xl transition hover:text-blue-500 dark:text-gray-400 dark:hover:text-white">
             <i class="bi bi-twitter-x"></i>
           </a>
-          <a class="size-6 transition fill-black hover:text-blue-500">
-            <span class="sr-only"> Instagram </span>
+          <a href="#" class="text-xl transition hover:text-pink-500 dark:text-gray-400 dark:hover:text-white">
             <i class="bi bi-instagram"></i>
           </a>
         </span>
       </div>
-      <p>&copy; <?= date('Y') ?> GibelFm • The Spirit of Muaro Jambi</p>
-      <div>
-        <span class="text-sm font-medium text-gray-500">
-          Copyright © <span><?= date('Y') ?></span>
-        </span>
+      <p class="text-gray-600 dark:text-gray-400">&copy; <?= date('Y') ?> GibelFm • The Spirit of Muaro Jambi</p>
+      <div class="text-sm font-medium text-gray-500 dark:text-gray-600">
+        Copyright © <span><?= date('Y') ?></span>
       </div>
     </div>
   </footer>
 
   <script>
     AOS.init();
+
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', function() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+
+    // Mobile Menu Logic
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+      });
+    });
   </script>
   <script src="<?= $baseUrl ?>js/script.js"></script>
 </body>
