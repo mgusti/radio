@@ -6,6 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radio Player - Live Stream</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,26 +33,71 @@
   </style>
 </head>
 
-<body>  
-  <header class="p-4 pb-20">
+<body class="bg-white dark:bg-[#0a0a0a] text-black dark:text-white transition-colors duration-300">  
+  <header class="p-4 pb-12 relative z-50">
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex justify-between gap-8 items-center">
         <div>
-          <a href="" class=" font-bold text-4xl"><span class="border-b-4 border-black">Gibel</span>Fm</a>
+          <a href="" class="font-bold text-3xl md:text-4xl">
+            <span class="border-b-4 border-black dark:border-white transition-colors">Gibel</span>Fm
+          </a>
         </div>
-        <div class="flex items-center gap-8">
-          <nav class="hidden lg:flex gap-8">
-                        <a href="" class="hover:underline">Home</a>
-            <a href="news" class="hover:underline">News</a>
-                        <a href="#contact" class="hover:underline">Contact us</a>
+        
+        <div class="flex items-center gap-4 lg:gap-8">
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex gap-8 font-medium">
+                        <a href="" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Home</a>
+            <a href="news" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">News</a>
+                        <a href="#contact" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Contact us</a>
                       </nav>
-          <span class="hidden lg:block">|</span>
-          <div class="flex gap-4 text items-center">
-            <a href="">
-              <i class="flex items-center justify-center bg-black text-white rounded-full w-[35px] h-[35px] bi bi-search"></i>
+          
+          <span class="hidden lg:block text-gray-200 dark:text-gray-800">|</span>
+          
+          <div class="flex gap-2 md:gap-4 items-center">
+            <!-- Search Icon (Keep as is for now) -->
+            <button class="flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-full w-[35px] h-[35px] hover:scale-105 transition-transform">
+              <i class="bi bi-search"></i>
+            </button>
+            
+            <!-- Theme Toggle (Replacing Person Icon) -->
+            <button id="theme-toggle" class="flex items-center justify-center bg-black dark:bg-white text-white dark:text-black rounded-full w-[35px] h-[35px] hover:scale-105 transition-transform">
+              <i class="bi bi-moon-stars-fill dark:hidden"></i>
+              <i class="bi bi-sun-fill hidden dark:block"></i>
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="lg:hidden flex items-center justify-center bg-gray-100 dark:bg-white/5 text-black dark:text-white rounded-full w-[35px] h-[35px]">
+              <i class="bi bi-list text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white dark:bg-black z-[100] transform translate-x-full transition-transform duration-300 lg:hidden">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-12">
+          <a href="" class="font-bold text-3xl">
+            <span class="border-b-4 border-black dark:border-white">Gibel</span>Fm
+          </a>
+          <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5">
+            <i class="bi bi-x-lg text-xl"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-2xl font-bold">
+          <a href="" class="mobile-nav-link">Home</a>
+          <a href="news" class="mobile-nav-link">News</a>
+          <a href="#contact" class="mobile-nav-link">Contact us</a>
+        </nav>
+        <div class="mt-12 pt-12 border-t border-gray-100 dark:border-white/10">
+          <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Follow Us</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="bi bi-instagram"></i>
             </a>
-            <a href="">
-              <i class="flex items-center justify-center bg-black text-white rounded-full w-[35px] h-[35px] bi bi-person"></i>
+            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="bi bi-twitter-x"></i>
             </a>
           </div>
         </div>
@@ -60,13 +117,13 @@
             <i class="bi bi-star-fill text-yellow-400"></i>
             <i class="bi bi-star-fill text-yellow-400"></i>
           </div>
-          <span class="text-xs text-gray-600">
+          <span class="text-xs text-gray-600 dark:text-gray-400">
             4.8/5 (45k listeners)
           </span>
         </div>
-        <h1 class="text-2xl lg:text-5xl text-center">
+        <h1 class="text-2xl lg:text-5xl text-center text-gray-900 dark:text-white">
           Radio Gibel_Fm
-          <span class="block text-gray-400 pt-4">The Spirit of Muaro Jambi</span>
+          <span class="block text-gray-400 dark:text-gray-500 pt-4">The Spirit of Muaro Jambi</span>
         </h1>
         
 
@@ -84,15 +141,15 @@
       <div class="flex flex-col lg:flex-row gap-4">
         <div
           class="flex w-full rounded-xl p-8 min-h-[300px] md:min-h-[350px] lg:min-h-[400px] bg-cover bg-center border"
-          style="background-image:url(https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3)">
+          style="background-image:url(img/gibelfm.jpeg)">
           <div class="mt-auto flex flex-col md:flex-row gap-4 w-full">
-            <a href="" class="bg-white hover:bg-black hover:text-white p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors">
+            <a href="#stations" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
               <span class="pl-2 font-medium">Discover Shows</span>
-              <i class="flex items-center justify-center bi bi-arrow-down bg-black text-white rounded-full p-1 w-[40px] h-[40px] text-center"></i>
+              <i class="flex items-center justify-center bi bi-arrow-down bg-black dark:bg-white text-white dark:text-black rounded-full p-1 w-[40px] h-[40px] text-center"></i>
             </a>
-            <a href="#contact" class="bg-white hover:bg-black hover:text-white p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors">
+            <a href="#contact" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
               <span class="pl-2 font-medium">Request Song</span>
-              <i class="flex items-center justify-center bi bi-music-note bg-black text-white rounded-full p-1 w-[40px] h-[40px] text-center"></i>
+              <i class="flex items-center justify-center bi bi-music-note bg-black dark:bg-white text-white dark:text-black rounded-full p-1 w-[40px] h-[40px] text-center"></i>
             </a>
           </div>
         </div>
@@ -205,15 +262,15 @@
   <section class="p-4 py-20" id="stations">
     <div class="w-full max-w-7xl mx-auto">
       <div class="pb-8 flex justify-between items-center gap-8">
-        <h2 class="text-4xl lg:text-5xl pb-4 font-semibold">
+        <h2 class="text-4xl lg:text-5xl pb-4 font-semibold text-gray-900 dark:text-white">
           Our Stations
         </h2>
         <div class="hidden md:flex gap-6 text-2xl">
-          <a href="">
-            <i class="flex items-center justify-center text-black border border-black rounded-full p-2 bi bi-arrow-left hover:bg-black hover:text-white transition"></i>
+          <a href="#">
+            <i class="flex items-center justify-center text-black dark:text-white border border-black dark:border-white rounded-full p-2 bi bi-arrow-left hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition"></i>
           </a>
-          <a href="">
-            <i class="flex items-center justify-center text-black border border-black rounded-full p-2 bi bi-arrow-right hover:bg-black hover:text-white transition"></i>
+          <a href="#">
+            <i class="flex items-center justify-center text-black dark:text-white border border-black dark:border-white rounded-full p-2 bi bi-arrow-right hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition"></i>
           </a>
         </div>
       </div>
@@ -227,8 +284,8 @@
               src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               alt="Lofi Beats">
           </div>
-          <h3 class="text-2xl pt-4 font-semibold">Lofi Beats</h3>
-          <p class="text-gray-600">
+          <h3 class="text-2xl pt-4 font-semibold text-gray-900 dark:text-white">Lofi Beats</h3>
+          <p class="text-gray-600 dark:text-gray-400">
             Relaxing beats and chill vibes for studying or working.
           </p>
         </a>
@@ -240,8 +297,8 @@
               src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80"
               alt="Global News">
           </div>
-          <h3 class="text-2xl pt-4 font-semibold">Global News</h3>
-          <p class="text-gray-600">
+          <h3 class="text-2xl pt-4 font-semibold text-gray-900 dark:text-white">Global News</h3>
+          <p class="text-gray-600 dark:text-gray-400">
             24/7 coverage of world events and current affairs.
           </p>
         </a>
@@ -253,8 +310,8 @@
               src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               alt="Classic Rock">
           </div>
-          <h3 class="text-2xl pt-4 font-semibold">Classic Rock</h3>
-          <p class="text-gray-600">
+          <h3 class="text-2xl pt-4 font-semibold text-gray-900 dark:text-white">Classic Rock</h3>
+          <p class="text-gray-600 dark:text-gray-400">
             The greatest hits from the golden era of rock and roll.
           </p>
         </a>
@@ -266,17 +323,17 @@
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex flex-col gap-8">
         <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4">
-          <h2 class="text-3xl lg:text-5xl pb-4 font-semibold">
+          <h2 class="text-3xl lg:text-5xl pb-4 font-semibold text-gray-900 dark:text-white">
             Featured Podcasts
           </h2>
-          <div class="flex gap-4 text-xl overflow-x-auto pb-2 lg:pb-0 hide-scrollbar">
-            <a href="" class="p-2 px-4 border border-black hover:bg-black hover:text-white rounded-full transition whitespace-nowrap">
+          <div class="flex gap-4 text-xl overflow-x-auto pb-2 lg:pb-0 hide-scrollbar font-medium">
+            <a href="#" class="p-2 px-6 border border-black dark:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black rounded-full transition whitespace-nowrap text-gray-900 dark:text-white">
               All
             </a>
-            <a href="" class="p-2 px-4 border border-black bg-black text-white rounded-full transition whitespace-nowrap">
+            <a href="#" class="p-2 px-6 border border-black dark:border-white bg-black dark:bg-white text-white dark:text-black rounded-full transition whitespace-nowrap">
               New Episodes
             </a>
-            <a href="" class="p-2 px-4 border border-black hover:bg-black hover:text-white rounded-full transition whitespace-nowrap">
+            <a href="#" class="p-2 px-6 border border-black dark:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black rounded-full transition whitespace-nowrap text-gray-900 dark:text-white">
               Trending
             </a>
           </div>
@@ -290,9 +347,9 @@
                 src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3"
                 alt="">
             </div>
-            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium">Tech Today <span
-                class="lg:ml-auto text-gray-500 font-bold text-sm mt-1 lg:mt-0">Ep. 42</span></h3>
-            <p class="text-sm text-gray-600">The latest in AI and software.</p>
+            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium text-gray-900 dark:text-white">Tech Today <span
+                class="lg:ml-auto text-gray-500 dark:text-gray-400 font-bold text-sm mt-1 lg:mt-0">Ep. 42</span></h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">The latest in AI and software.</p>
           </a>
           <a href="" class="w-full flex flex-col gap-2 group">
             <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
@@ -301,9 +358,9 @@
                 src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3"
                 alt="">
             </div>
-            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium">True Crime Hour <span
-                class="lg:ml-auto text-gray-500 font-bold text-sm mt-1 lg:mt-0">Ep. 12</span></h3>
-            <p class="text-sm text-gray-600">Unsolved mysteries explored.</p>
+            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium text-gray-900 dark:text-white">True Crime Hour <span
+                class="lg:ml-auto text-gray-500 dark:text-gray-400 font-bold text-sm mt-1 lg:mt-0">Ep. 12</span></h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Unsolved mysteries explored.</p>
           </a>
           <a href="" class="w-full hidden md:flex flex-col gap-2 group">
             <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
@@ -312,73 +369,71 @@
                 src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3"
                 alt="">
             </div>
-            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium">Mindful Mornings <span
-                class="lg:ml-auto text-gray-500 font-bold text-sm mt-1 lg:mt-0">Daily</span></h3>
-            <p class="text-sm text-gray-600">Start your day right with meditation.</p>
+            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium text-gray-900 dark:text-white">Mindful Mornings <span
+                class="lg:ml-auto text-gray-500 dark:text-gray-400 font-bold text-sm mt-1 lg:mt-0">Daily</span></h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Start your day right with meditation.</p>
           </a>
         </div>
 
-        <a href="" class="p-2 px-4 border border-black hover:bg-black hover:text-white rounded-full mx-auto text-xl transition mt-4">
+        <a href="#" class="p-3 px-8 border border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black rounded-full mx-auto text-xl font-bold transition mt-4">
           See all podcasts <i class="bi bi-arrow-up-right"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="p-4 py-20 bg-gray-50/50">
+  <section class="p-4 py-20 bg-gray-50/50 dark:bg-white/5 transition-colors">
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex flex-col gap-8">
         <div class="flex justify-between items-end">
           <div>
-            <h2 class="text-3xl lg:text-5xl font-semibold">Latest News</h2>
-            <p class="text-gray-500 mt-2 text-lg">Stay updated with the radio community.</p>
+            <h2 class="text-3xl lg:text-5xl font-semibold text-gray-900 dark:text-white">Latest News</h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-2 text-lg">Stay updated with the radio community.</p>
           </div>
-          <a href="/radio/news" class="text-blue-600 font-semibold hover:underline flex items-center gap-1 text-lg">
+          <a href="#news" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1 text-lg">
             View All <i class="bi bi-arrow-right"></i>
           </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300">
+                                    <article class="bg-white dark:bg-[#121212] rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-white/10">
                 <div class="h-48 overflow-hidden relative">
-                  <img src="https://www.instagram.com/p/DX9aK7RABOd/media/?size=l" alt="KARAOKE MALAM" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                  <img src="https://www.instagram.com/p/DX-0zepDwO7/media/?size=l" alt="dfg" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-bold">
                     May 06                  </div>
                 </div>
                 <div class="p-6 flex flex-col flex-1">
-                  <h3 class="text-xl font-bold mb-2 line-clamp-2">KARAOKE MALAM</h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">Live on air 0852-1857-9970
-Pukul 20.00- 23.00 wib
-Bareng Veri &amp; Sari</p>
-                  <a href="/radio/news" class="mt-auto text-black font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
+                  <h3 class="text-xl font-bold mb-2 line-clamp-2 text-gray-900 dark:text-white">dfg</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">gdf</p>
+                  <a href="#news" class="mt-auto text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
                     Read Story <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
                   </a>
                 </div>
               </article>
-                          <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300">
+                          <article class="bg-white dark:bg-[#121212] rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-white/10">
                 <div class="h-48 overflow-hidden relative">
-                  <img src="https://www.instagram.com/p/DX9WngoIDdV/media/?size=l" alt="Mari Bergabung Bersama Gibel FM" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                  <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="dg" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-bold">
                     May 06                  </div>
                 </div>
                 <div class="p-6 flex flex-col flex-1">
-                  <h3 class="text-xl font-bold mb-2 line-clamp-2">Mari Bergabung Bersama Gibel FM</h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">Ikutan Jadi PENYIAR RADIO GIBEL silakan KONFIRMASI KE MIMIN RADIO GIBEL FM DI WA 082379106799 UNTUK JADWAL TRAINING.</p>
-                  <a href="/radio/news" class="mt-auto text-black font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
+                  <h3 class="text-xl font-bold mb-2 line-clamp-2 text-gray-900 dark:text-white">dg</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">gdfg</p>
+                  <a href="#news" class="mt-auto text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
                     Read Story <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
                   </a>
                 </div>
               </article>
-                          <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300">
+                          <article class="bg-white dark:bg-[#121212] rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-white/10">
                 <div class="h-48 overflow-hidden relative">
-                  <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Radio Broadcasting in the Digital Age" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                  <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="ads ass fd" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-bold">
-                    May 05                  </div>
+                    May 06                  </div>
                 </div>
                 <div class="p-6 flex flex-col flex-1">
-                  <h3 class="text-xl font-bold mb-2 line-clamp-2">Radio Broadcasting in the Digital Age</h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">How traditional radio is adapting to the internet era with online streaming and podcasting.</p>
-                  <a href="/radio/news" class="mt-auto text-black font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
+                  <h3 class="text-xl font-bold mb-2 line-clamp-2 text-gray-900 dark:text-white">ads ass fd</h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">dasdsa  sads</p>
+                  <a href="#news" class="mt-auto text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
                     Read Story <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
                   </a>
                 </div>
@@ -400,18 +455,18 @@ Bareng Veri &amp; Sari</p>
               <div class="absolute inset-0 bg-black bg-opacity-20"></div>
               <h1 class="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11 drop-shadow-md z-10">Contact us</h1>
               <div class="absolute bottom-0 w-full lg:p-11 p-5 z-10">
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                  <a href="#" class="flex items-center mb-6 hover:text-blue-600 transition group/link">
-                    <i class="bi bi-telephone text-xl"></i>
-                    <h5 class="underline text-black text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600">123-123-123</h5>
+                <div class="bg-white dark:bg-[#121212] rounded-lg p-6 shadow-lg border border-gray-100 dark:border-white/10">
+                  <a href="#" class="flex items-center mb-6 hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
+                    <i class="bi bi-telephone text-xl dark:text-white"></i>
+                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">123-123-123</h5>
                   </a>
-                  <a href="mailto:studio@gibelfm.com" class="flex items-center mb-6 hover:text-blue-600 transition group/link">
-                    <i class="bi bi-envelope text-xl"></i>
-                    <h5 class="underline text-black text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600">studio@gibelfm.com</h5>
+                  <a href="mailto:studio@gibelfm.com" class="flex items-center mb-6 hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
+                    <i class="bi bi-envelope text-xl dark:text-white"></i>
+                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">studio@gibelfm.com</h5>
                   </a>
-                  <a href="#" class="flex items-center hover:text-blue-600 transition group/link">
-                    <i class="bi bi-geo-alt text-xl"></i>
-                    <h5 class="underline text-black text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600">424 Broadcast Ave,
+                  <a href="#" class="flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
+                    <i class="bi bi-geo-alt text-xl dark:text-white"></i>
+                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">424 Broadcast Ave,
                       Media City, WA
                       76543</h5>
                   </a>
@@ -421,53 +476,81 @@ Bareng Veri &amp; Sari</p>
           </div>
         </div>
 
-        <div class="p-8 lg:p-14 bg-gray-50 border-l border-gray-100 flex flex-col justify-center">
-          <h2 class="font-manrope text-4xl font-semibold leading-10 mb-10">Send Us A Message</h2>
+        <div class="p-8 lg:p-14 bg-gray-50 dark:bg-[#0f0f0f] border-l border-gray-100 dark:border-white/5 flex flex-col justify-center transition-colors">
+          <h2 class="font-manrope text-4xl font-semibold leading-10 mb-10 text-gray-900 dark:text-white">Send Us A Message</h2>
           <input type="text"
-            class="w-full h-12 text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-6 rounded-lg transition"
+            class="w-full h-12 text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-6 rounded-lg transition"
             placeholder="Name">
           <input type="email"
-            class="w-full h-12 text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-6 rounded-lg transition"
+            class="w-full h-12 text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-6 rounded-lg transition"
             placeholder="Email">
           <input type="text"
-            class="w-full h-12 text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-6 rounded-lg transition"
+            class="w-full h-12 text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-6 rounded-lg transition"
             placeholder="Subject">
           <textarea
-            class="min-h-[160px] w-full text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-8 rounded-lg resize-y transition"
+            class="min-h-[160px] w-full text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-8 rounded-lg resize-y transition"
             placeholder="Message"></textarea>
           <button
-            class="w-full h-14 text-white text-lg font-semibold leading-6 rounded-full transition-all duration-300 hover:bg-gray-800 bg-black shadow-md hover:shadow-xl">Send Message</button>
+            class="w-full h-14 text-white dark:text-black text-lg font-semibold leading-6 rounded-full transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 bg-black dark:bg-white shadow-md hover:shadow-xl">Send Message</button>
         </div>
       </div>
     </div>
   </section>
   </main>
 
-  <footer class="p-4 pb-10 pt-20" id="contact">
-    <div class="gap-8 flex justify-between mx-auto max-w-7xl w-full">
-      <div class="flex justify-center space-x-6">
-        <span class="inline-flex justify-center w-full gap-3 lg:ml-auto md:justify-start md:w-auto">
-          <a class="size-6 transition fill-black hover:text-blue-500">
-            <span class="sr-only"> twitter </span>
+  <footer class="p-4 pb-10 pt-20 border-t border-gray-100 dark:border-white/5" id="contact">
+    <div class="gap-8 flex flex-col md:flex-row justify-between mx-auto max-w-7xl w-full">
+      <div class="flex items-center space-x-6">
+        <span class="inline-flex gap-3">
+          <a href="#" class="text-xl transition hover:text-blue-500 dark:text-gray-400 dark:hover:text-white">
             <i class="bi bi-twitter-x"></i>
           </a>
-          <a class="size-6 transition fill-black hover:text-blue-500">
-            <span class="sr-only"> Instagram </span>
+          <a href="#" class="text-xl transition hover:text-pink-500 dark:text-gray-400 dark:hover:text-white">
             <i class="bi bi-instagram"></i>
           </a>
         </span>
       </div>
-      <p>&copy; 2026 GibelFm • The Spirit of Muaro Jambi</p>
-      <div>
-        <span class="text-sm font-medium text-gray-500">
-          Copyright © <span>2026</span>
-        </span>
+      <p class="text-gray-600 dark:text-gray-400">&copy; 2026 GibelFm • The Spirit of Muaro Jambi</p>
+      <div class="text-sm font-medium text-gray-500 dark:text-gray-600">
+        Copyright © <span>2026</span>
       </div>
     </div>
   </footer>
 
   <script>
     AOS.init();
+
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', function() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+
+    // Mobile Menu Logic
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    mobileMenuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+      });
+    });
   </script>
   <script src="js/script.js"></script>
 </body>
