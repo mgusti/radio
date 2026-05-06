@@ -1,0 +1,8 @@
+# PHP
+.htaccess
+.DS_Store
+Thumbs.db
+
+# WAMP/Local stuff
+*.sql
+*.log

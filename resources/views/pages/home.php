@@ -1,0 +1,348 @@
+<section class="p-4 py-5" data-aos="fade-down" data-aos-duration="1000">
+    <div class="w-full max-w-7xl mx-auto">
+      <div class="flex flex-col gap-10 items-center">
+        <div class="flex gap-4 items-center">
+          <div class="flex gap-1">
+            <i class="bi bi-star-fill text-yellow-400"></i>
+            <i class="bi bi-star-fill text-yellow-400"></i>
+            <i class="bi bi-star-fill text-yellow-400"></i>
+            <i class="bi bi-star-fill text-yellow-400"></i>
+            <i class="bi bi-star-fill text-yellow-400"></i>
+          </div>
+          <span class="text-xs text-gray-600">
+            4.8/5 (45k listeners)
+          </span>
+        </div>
+        <h1 class="text-2xl lg:text-5xl text-center">
+          Radio Gibel_Fm
+          <span class="block text-gray-400 pt-4">The Spirit of Muaro Jambi</span>
+        </h1>
+        
+
+
+        <!-- <div class="flex flex-col md:flex-row items-center gap-4 mt-4">
+          <a href="#stations" class="bg-black border border-black text-white rounded-lg p-2 px-8 shadow-xl outline-none hover:bg-gray-800 transition">Explore Stations</a>
+          <a href="#podcasts" class="border border-black text-black rounded-lg p-2 px-8 shadow-xl outline-none hover:bg-gray-100 transition">Featured Podcasts</a>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="p-4 py-5">
+    <div class="w-full max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row gap-4">
+        <div
+          class="flex w-full rounded-xl p-8 min-h-[300px] md:min-h-[350px] lg:min-h-[400px] bg-cover bg-center border"
+          style="background-image:url(https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3)">
+          <div class="mt-auto flex flex-col md:flex-row gap-4 w-full">
+            <a href="" class="bg-white hover:bg-black hover:text-white p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors">
+              <span class="pl-2 font-medium">Discover Shows</span>
+              <i class="flex items-center justify-center bi bi-arrow-down bg-black text-white rounded-full p-1 w-[40px] h-[40px] text-center"></i>
+            </a>
+            <a href="#contact" class="bg-white hover:bg-black hover:text-white p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors">
+              <span class="pl-2 font-medium">Request Song</span>
+              <i class="flex items-center justify-center bi bi-music-note bg-black text-white rounded-full p-1 w-[40px] h-[40px] text-center"></i>
+            </a>
+          </div>
+        </div>
+        <div class="w-full flex flex-col gap-4">
+          <div class="w-full h-full rounded-xl bg-gradient-to-tr from-gray-900 to-black shadow-2xl flex items-center justify-center p-0 overflow-hidden relative group">
+            <!-- Radio Player Moved and Upgraded -->
+            <div class="radio-container w-full h-full p-6 lg:p-8 flex flex-col justify-between relative z-10 text-white">
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-2 items-center text-xs font-bold bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20" id="stream-status">
+                        <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)] animate-pulse"></span>
+                        <span class="uppercase tracking-widest">Live Now</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="bi bi-broadcast text-red-500 animate-pulse"></i>
+                        <div class="text-[10px] font-black tracking-[0.2em] uppercase opacity-70">On Air</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-center gap-6">
+                        <div class="w-24 h-24 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                            <i class="bi bi-vinyl-fill text-5xl text-white/80 animate-[spin_4s_linear_infinite]"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Muaro Jambi Local Radio</span>
+                            <h3 class="font-bold text-4xl lg:text-5xl tracking-tight leading-none mb-2">Gibel Fm</h3>
+                            <p class="text-lg text-gray-400 font-medium italic opacity-80">"The Spirit of Muaro Jambi"</p>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Visualizer -->
+                    <div class="h-16 flex items-end justify-center gap-1.5 bars opacity-40 hover:opacity-100 transition-opacity duration-500" id="visualizer">
+                        <?php for($i=0; $i<24; $i++): ?>
+                            <div class="bar w-2 bg-white/40 rounded-full transition-all duration-300"></div>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6 bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+                    <button class="w-20 h-20 flex-shrink-0 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] group/play" id="btn-play-pause">
+                        <i class="ph-fill ph-play text-3xl" id="icon-play"></i>
+                        <i class="ph-fill ph-pause text-3xl hidden" id="icon-pause"></i>
+                    </button>
+                    
+                    <div class="flex-1 flex flex-col gap-2">
+                        <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest opacity-50">
+                            <span>Volume Control</span>
+                            <span id="volume-percent"></span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="ph ph-speaker-high text-white/50 text-xl" id="volume-icon"></i>
+                            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.7" 
+                                   class="w-full accent-white h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer hover:bg-white/20 transition-all">
+                        </div>
+                    </div>
+                </div>
+                
+                <audio id="radio-audio" preload="none" crossorigin="anonymous">
+                    <source src="<?= htmlspecialchars($streamUrl ?? 'https://pu.klikhost.com/proxy/radiogib/stream') ?>" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            
+            <!-- Abstract Background Elements -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+          </div>
+          <!-- <div class="h-full flex flex-col md:flex-row gap-4">
+            <a href=""
+              class="min-h-[150px] flex w-full overflow-hidden rounded-xl bg-gray-300 bg-cover bg-center border relative"
+              style="background-image:url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3)">
+              <p class="text-white text-lg font-bold mt-auto w-full p-2 bg-black bg-opacity-70 backdrop-blur-sm">
+                #NewPodcasts
+              </p>
+            </a>
+            <a href=""
+              class="min-h-[150px] flex w-full overflow-hidden rounded-xl bg-gray-300 bg-cover bg-center border relative"
+              style="background-image:url(https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3)">
+              <p class="text-white text-lg font-bold mt-auto w-full p-2 bg-black bg-opacity-70 backdrop-blur-sm">
+                #LiveSessions
+              </p>
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-4 py-20" id="stations">
+    <div class="w-full max-w-7xl mx-auto">
+      <div class="pb-8 flex justify-between items-center gap-8">
+        <h2 class="text-4xl lg:text-5xl pb-4 font-semibold">
+          Our Stations
+        </h2>
+        <div class="hidden md:flex gap-6 text-2xl">
+          <a href="">
+            <i class="flex items-center justify-center text-black border border-black rounded-full p-2 bi bi-arrow-left hover:bg-black hover:text-white transition"></i>
+          </a>
+          <a href="">
+            <i class="flex items-center justify-center text-black border border-black rounded-full p-2 bi bi-arrow-right hover:bg-black hover:text-white transition"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <a href="" class="w-full flex flex-col gap-2 group">
+          <div class="max-h-[300px] md:max-h-[500px] overflow-hidden rounded-xl shadow-xl relative">
+            <i class="flex items-center justify-center text-white rounded-full bg-black p-3 bi bi-play-fill absolute top-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></i>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity z-0"></div>
+            <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
+              src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+              alt="Lofi Beats">
+          </div>
+          <h3 class="text-2xl pt-4 font-semibold">Lofi Beats</h3>
+          <p class="text-gray-600">
+            Relaxing beats and chill vibes for studying or working.
+          </p>
+        </a>
+        <a href="" class="w-full flex flex-col gap-2 group">
+          <div class="max-h-[300px] md:max-h-[500px] overflow-hidden rounded-xl shadow-xl relative">
+            <i class="flex items-center justify-center text-white rounded-full bg-black p-3 bi bi-play-fill absolute top-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></i>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity z-0"></div>
+            <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
+              src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80"
+              alt="Global News">
+          </div>
+          <h3 class="text-2xl pt-4 font-semibold">Global News</h3>
+          <p class="text-gray-600">
+            24/7 coverage of world events and current affairs.
+          </p>
+        </a>
+        <a href="" class="w-full hidden md:flex flex-col gap-2 group">
+          <div class="max-h-[300px] md:max-h-[500px] overflow-hidden rounded-xl shadow-xl relative">
+            <i class="flex items-center justify-center text-white rounded-full bg-black p-3 bi bi-play-fill absolute top-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></i>
+            <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity z-0"></div>
+            <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
+              src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
+              alt="Classic Rock">
+          </div>
+          <h3 class="text-2xl pt-4 font-semibold">Classic Rock</h3>
+          <p class="text-gray-600">
+            The greatest hits from the golden era of rock and roll.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-4 py-20" id="podcasts">
+    <div class="w-full max-w-7xl mx-auto">
+      <div class="flex flex-col gap-8">
+        <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4">
+          <h2 class="text-3xl lg:text-5xl pb-4 font-semibold">
+            Featured Podcasts
+          </h2>
+          <div class="flex gap-4 text-xl overflow-x-auto pb-2 lg:pb-0 hide-scrollbar">
+            <a href="" class="p-2 px-4 border border-black hover:bg-black hover:text-white rounded-full transition whitespace-nowrap">
+              All
+            </a>
+            <a href="" class="p-2 px-4 border border-black bg-black text-white rounded-full transition whitespace-nowrap">
+              New Episodes
+            </a>
+            <a href="" class="p-2 px-4 border border-black hover:bg-black hover:text-white rounded-full transition whitespace-nowrap">
+              Trending
+            </a>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <a href="" class="w-full flex flex-col gap-2 group">
+            <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
+              <i class="flex items-center justify-center text-white rounded-full bg-black p-2 bi bi-headphones absolute top-4 right-4 group-hover:bg-blue-600 transition-colors z-10"></i>
+              <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
+                src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3"
+                alt="">
+            </div>
+            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium">Tech Today <span
+                class="lg:ml-auto text-gray-500 font-bold text-sm mt-1 lg:mt-0">Ep. 42</span></h3>
+            <p class="text-sm text-gray-600">The latest in AI and software.</p>
+          </a>
+          <a href="" class="w-full flex flex-col gap-2 group">
+            <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
+              <i class="flex items-center justify-center text-white rounded-full bg-black p-2 bi bi-headphones absolute top-4 right-4 group-hover:bg-blue-600 transition-colors z-10"></i>
+              <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
+                src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3"
+                alt="">
+            </div>
+            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium">True Crime Hour <span
+                class="lg:ml-auto text-gray-500 font-bold text-sm mt-1 lg:mt-0">Ep. 12</span></h3>
+            <p class="text-sm text-gray-600">Unsolved mysteries explored.</p>
+          </a>
+          <a href="" class="w-full hidden md:flex flex-col gap-2 group">
+            <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
+              <i class="flex items-center justify-center text-white rounded-full bg-black p-2 bi bi-headphones absolute top-4 right-4 group-hover:bg-blue-600 transition-colors z-10"></i>
+              <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
+                src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3"
+                alt="">
+            </div>
+            <h3 class="text-2xl pt-4 flex flex-col lg:flex-row lg:items-center font-medium">Mindful Mornings <span
+                class="lg:ml-auto text-gray-500 font-bold text-sm mt-1 lg:mt-0">Daily</span></h3>
+            <p class="text-sm text-gray-600">Start your day right with meditation.</p>
+          </a>
+        </div>
+
+        <a href="" class="p-2 px-4 border border-black hover:bg-black hover:text-white rounded-full mx-auto text-xl transition mt-4">
+          See all podcasts <i class="bi bi-arrow-up-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-4 py-20 bg-gray-50/50">
+    <div class="w-full max-w-7xl mx-auto">
+      <div class="flex flex-col gap-8">
+        <div class="flex justify-between items-end">
+          <div>
+            <h2 class="text-3xl lg:text-5xl font-semibold">Latest News</h2>
+            <p class="text-gray-500 mt-2 text-lg">Stay updated with the radio community.</p>
+          </div>
+          <a href="/radio/news" class="text-blue-600 font-semibold hover:underline flex items-center gap-1 text-lg">
+            View All <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <?php if(!empty($latestNews)): ?>
+            <?php foreach($latestNews as $news): ?>
+              <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col group hover:shadow-2xl transition-all duration-300">
+                <div class="h-48 overflow-hidden relative">
+                  <img src="<?= htmlspecialchars($news['image_url']) ?>" alt="<?= htmlspecialchars($news['title']) ?>" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] uppercase tracking-widest px-2 py-1 rounded-full font-bold">
+                    <?= date('M d', strtotime($news['date'] ?? $news['created_at'])) ?>
+                  </div>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <h3 class="text-xl font-bold mb-2 line-clamp-2"><?= htmlspecialchars($news['title']) ?></h3>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-3"><?= htmlspecialchars($news['excerpt']) ?></p>
+                  <a href="/radio/news" class="mt-auto text-black font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
+                    Read Story <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                  </a>
+                </div>
+              </article>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p class="col-span-full text-center text-gray-500 py-10">No news articles yet.</p>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="p-4 py-20">
+    <div class="mx-auto max-w-7xl w-full">
+      <div class="grid lg:grid-cols-2 grid-cols-1 items-stretch shadow-2xl rounded-2xl overflow-hidden">
+        <div class="lg:mb-0">
+          <div class="group w-full h-full min-h-[400px]">
+            <div class="relative h-full">
+              <img
+                src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
+                alt="ContactUs tailwind section" class="w-full h-full object-cover bg-blend-multiply" />
+              <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+              <h1 class="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11 drop-shadow-md z-10">Contact us</h1>
+              <div class="absolute bottom-0 w-full lg:p-11 p-5 z-10">
+                <div class="bg-white rounded-lg p-6 shadow-lg">
+                  <a href="#" class="flex items-center mb-6 hover:text-blue-600 transition group/link">
+                    <i class="bi bi-telephone text-xl"></i>
+                    <h5 class="underline text-black text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600">123-123-123</h5>
+                  </a>
+                  <a href="mailto:studio@gibelfm.com" class="flex items-center mb-6 hover:text-blue-600 transition group/link">
+                    <i class="bi bi-envelope text-xl"></i>
+                    <h5 class="underline text-black text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600">studio@gibelfm.com</h5>
+                  </a>
+                  <a href="#" class="flex items-center hover:text-blue-600 transition group/link">
+                    <i class="bi bi-geo-alt text-xl"></i>
+                    <h5 class="underline text-black text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600">424 Broadcast Ave,
+                      Media City, WA
+                      76543</h5>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 lg:p-14 bg-gray-50 border-l border-gray-100 flex flex-col justify-center">
+          <h2 class="font-manrope text-4xl font-semibold leading-10 mb-10">Send Us A Message</h2>
+          <input type="text"
+            class="w-full h-12 text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-6 rounded-lg transition"
+            placeholder="Name">
+          <input type="email"
+            class="w-full h-12 text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-6 rounded-lg transition"
+            placeholder="Email">
+          <input type="text"
+            class="w-full h-12 text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-6 rounded-lg transition"
+            placeholder="Subject">
+          <textarea
+            class="min-h-[160px] w-full text-gray-800 placeholder-gray-400 bg-white shadow-sm text-lg font-normal leading-7 border border-gray-200 focus:border-black focus:outline-none p-4 mb-8 rounded-lg resize-y transition"
+            placeholder="Message"></textarea>
+          <button
+            class="w-full h-14 text-white text-lg font-semibold leading-6 rounded-full transition-all duration-300 hover:bg-gray-800 bg-black shadow-md hover:shadow-xl">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
