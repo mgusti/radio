@@ -1,10 +1,19 @@
 # .htaccess Documentation
 
-Since `.htaccess` files are often ignored by version control (Git) to avoid environment conflicts, this document provides the standard configuration used for the **GibelFm** project to ensure security and proper routing.
+This document explains the `.htaccess` configuration for the **GibelFm** project. These files ensure proper routing and secure your sensitive code.
 
-## 1. Root Directory (`/radio/.htaccess`)
-This file is responsible for transparently redirecting all traffic to the `public/` folder and blocking access to sensitive source code.
+> [!IMPORTANT]
+> Since `.htaccess` files are usually ignored by Git, you must manually create them when deploying to a new server or moving the project.
 
+---
+
+## 1. Root Directory Setup
+There are two common ways to set up this project. Choose the one that matches your environment.
+
+### **Option A: Subfolder (e.g., Local WAMP /radio/)**
+Use this if your URL looks like `localhost/radio/`.
+
+**File:** `/.htaccess` (Root)
 ```apache
 # Disable directory listing
 Options -Indexes
@@ -14,36 +23,57 @@ Options -Indexes
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>
-    <IfModule !mod_authz_core.c>
-        Order allow,deny
-        Deny from all
-    </IfModule>
 </FilesMatch>
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /radio/
 
-    # 1. Block access to sensitive folders explicitly
+    # Block access to sensitive folders
     RewriteRule ^(app|resources|config|routes|scratch|gibelfm|\.git|\.github)($|/) - [F,L]
 
-    # 2. Block access to specific sensitive files in root
-    RewriteRule ^(\.gitignore|composer\.json|composer\.lock|package\.json|package-lock\.json|README\.md)$ - [F,L]
-
-    # 3. Handle the main redirection to public folder
+    # Redirect to public folder
     RewriteRule ^$ public/ [L]
-
-    # If the request doesn't start with 'public/', prepend 'public/'
     RewriteCond %{REQUEST_URI} !^/radio/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+```
+
+### **Option B: Root Domain (e.g., InfinityFree / Production)**
+Use this if your URL looks like `yourdomain.com/` and you uploaded the files directly into `htdocs`.
+
+**File:** `/.htaccess` (Root)
+```apache
+# Disable directory listing
+Options -Indexes
+
+# Prevent access to hidden files
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Block access to sensitive folders
+    RewriteRule ^(app|resources|config|routes|scratch|gibelfm|\.git|\.github)($|/) - [F,L]
+
+    # Redirect to public folder
+    RewriteRule ^$ public/ [L]
+    RewriteCond %{REQUEST_URI} !^/public/
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 ```
 
 ---
 
-## 2. Public Directory (`/radio/public/.htaccess`)
-This file handles internal routing for the application (Front Controller pattern).
+## 2. Public Directory Routing
+This file stays the same regardless of your folder setup. It routes all virtual URLs (like `/news`) to the `index.php` file.
 
+**File:** `/public/.htaccess`
 ```apache
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -58,10 +88,10 @@ This file handles internal routing for the application (Front Controller pattern
 
 ---
 
-## 3. Sensitive Folders (`/app/`, `/config/`, `/resources/`, `/routes/`, `/scratch/`)
-Each of these folders contains an `.htaccess` file to block direct access to the PHP source code.
+## 3. Defense-in-Depth (Sensitive Folders)
+Place this file inside `app/`, `config/`, `resources/`, `routes/`, and `scratch/` to ensure no one can ever access your PHP logic directly.
 
-**Path:** `[folder]/.htaccess`
+**File:** `[folder]/.htaccess`
 ```apache
 <IfModule mod_authz_core.c>
     Require all denied
@@ -74,7 +104,7 @@ Each of these folders contains an `.htaccess` file to block direct access to the
 
 ---
 
-## Setup Instructions
-1. Ensure Apache has `mod_rewrite` enabled.
-2. In your WAMP/Apache config, ensure `AllowOverride All` is set for the project directory.
-3. If your project folder name is different from `radio`, update the `RewriteBase` and `RewriteCond` lines in the Root `.htaccess`.
+## Troubleshooting
+1. **500 Error**: Usually caused by a typo in `.htaccess` or your server not having `mod_rewrite` enabled.
+2. **403 Error**: Expected if you try to access the `/app/` folder directly.
+3. **Broken Links**: If CSS/JS doesn't load, check the `RewriteBase` in your root `.htaccess`.
