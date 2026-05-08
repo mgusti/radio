@@ -16,6 +16,12 @@ class AdminController {
     public function dashboard() {
         $newsModel = new News();
         $news = $newsModel->all();
+
+        $eventModel = new Event();
+        $currentEvent = $eventModel->current();
+        $upcomingEvent = $eventModel->upcoming();
+        $latestEvent = $eventModel->latest();
+
         $title = 'Admin Dashboard - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/dashboard.php';
     }

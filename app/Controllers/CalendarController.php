@@ -9,6 +9,10 @@ class CalendarController {
         $eventModel = new Event();
         $allEvents = $eventModel->all();
 
+        $today = date('Y-m-d');
+        $upcomingEvent = $eventModel->upcoming();
+        $upcomingDate = $upcomingEvent['event_date'] ?? null;
+
         // Group events by date for the calendar view
         $events = [];
         foreach ($allEvents as $event) {
@@ -24,7 +28,9 @@ class CalendarController {
 
         view('calendar', [
             'title'  => 'Program Calendar - GibelFm',
-            'events' => $events
+            'events' => $events,
+            'today' => $today,
+            'upcomingDate' => $upcomingDate,
         ]);
     }
 }

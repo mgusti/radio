@@ -46,17 +46,49 @@
                 for ($day = 1; $day <= $daysInMonth; $day++): 
                     $currentDate = sprintf('%04d-%02d-%02d', $year, $month, $day);
                     $isToday = $currentDate === date('Y-m-d');
+                    $isUpcomingDay = isset($upcomingDate) && $currentDate === $upcomingDate;
                     $hasEvents = isset($events[$currentDate]);
+
+                    $cellClasses = 'h-32 md:h-40 border-r border-b border-gray-100 dark:border-white/10 p-2 md:p-4 group transition-colors relative';
+                    if ($isToday) {
+                        $cellClasses .= ' bg-amber-50 dark:bg-amber-900/10 hover:bg-amber-100 dark:hover:bg-amber-900/20';
+                    } elseif ($isUpcomingDay) {
+                        $cellClasses .= ' bg-emerald-50 dark:bg-emerald-900/10 hover:bg-emerald-100 dark:hover:bg-emerald-900/20';
+                    } else {
+                        $cellClasses .= ' hover:bg-gray-50 dark:hover:bg-white/[0.03]';
+                    }
+
+                    $dayClasses = $isToday
+                        ? 'bg-black dark:bg-white text-white dark:text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full'
+                        : ($isUpcomingDay
+                            ? 'text-emerald-700 dark:text-emerald-300'
+                            : 'text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white');
                 ?>
-                    <div class="h-32 md:h-40 border-r border-b border-gray-100 dark:border-white/10 p-2 md:p-4 group hover:bg-gray-50 dark:hover:bg-white/[0.03] transition-colors relative">
-                        <span class="text-lg md:text-xl font-bold <?= $isToday ? 'bg-black dark:bg-white text-white dark:text-black w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full' : 'text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white' ?> transition-colors">
+                    <div class="<?= $cellClasses ?>">
+                        <span class="text-lg md:text-xl font-bold <?= $dayClasses ?> transition-colors">
                             <?= $day ?>
                         </span>
+                        <?php if ($isToday): ?>
+                            <span class="absolute top-3 right-3 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-[10px] shadow-lg">
+                                <i class="bi bi-pin-angle-fill"></i>
+                            </span>
+                        <?php endif; ?>
                         
                         <div class="mt-2 space-y-1">
                             <?php if ($hasEvents): ?>
                                 <?php foreach ($events[$currentDate] as $event): ?>
-                                    <div class="text-[10px] md:text-xs p-1.5 rounded-lg font-bold truncate transition-all cursor-pointer <?= $event['type'] === 'program' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' : 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' ?> hover:scale-105">
+                                    <?php
+                                        $itemClasses = $event['type'] === 'program'
+                                            ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                                            : 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400';
+
+                                        if ($isToday) {
+                                            $itemClasses = 'bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-200';
+                                        } elseif ($isUpcomingDay) {
+                                            $itemClasses = 'bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-200';
+                                        }
+                                    ?>
+                                    <div class="text-[10px] md:text-xs p-1.5 rounded-lg font-bold truncate transition-all cursor-pointer <?= $itemClasses ?> hover:scale-105">
                                         <i class="bi <?= $event['type'] === 'program' ? 'bi-broadcast' : 'bi-calendar-event' ?> mr-1"></i>
                                         <?= htmlspecialchars($event['title']) ?>
                                     </div>
@@ -87,8 +119,12 @@
                 <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Community Events</span>
             </div>
             <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-black dark:bg-white"></span>
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Current Day</span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Current Event</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Upcoming Event</span>
             </div>
         </div>
     </div>
