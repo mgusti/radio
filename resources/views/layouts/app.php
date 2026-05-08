@@ -51,9 +51,11 @@
           <!-- Desktop Nav -->
           <nav class="hidden lg:flex gap-8 font-medium">
             <?php $isNewsPage = strpos($_SERVER['REQUEST_URI'], 'news') !== false; ?>
+            <?php $isCalendarPage = strpos($_SERVER['REQUEST_URI'], 'calendar') !== false; ?>
             <a href="<?= rtrim($baseUrl, '/') ?>/" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Home</a>
             <a href="<?= rtrim($baseUrl, '/') ?>/news" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">News</a>
-            <?php if (!$isNewsPage): ?>
+            <a href="<?= rtrim($baseUrl, '/') ?>/calendar" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Calendar</a>
+            <?php if (!$isNewsPage && !$isCalendarPage): ?>
             <a href="#contact" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Contact us</a>
             <?php endif; ?>
           </nav>
@@ -95,6 +97,7 @@
         <nav class="flex flex-col gap-6 text-2xl font-bold">
           <a href="<?= rtrim($baseUrl, '/') ?>/" class="mobile-nav-link">Home</a>
           <a href="<?= rtrim($baseUrl, '/') ?>/news" class="mobile-nav-link">News</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/calendar" class="mobile-nav-link">Calendar</a>
           <a href="<?= rtrim($baseUrl, '/') ?>/#contact" class="mobile-nav-link">Contact us</a>
         </nav>
         <div class="mt-12 pt-12 border-t border-gray-100 dark:border-white/10">

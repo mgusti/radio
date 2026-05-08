@@ -34,14 +34,10 @@
         <div
           class="flex w-full rounded-xl p-8 min-h-[300px] md:min-h-[350px] lg:min-h-[400px] bg-cover bg-center border"
           style="background-image:url(/radio/public/img/gibelfm.jpeg)">
-          <div class="mt-auto flex flex-col md:flex-row gap-4 w-full">
-            <a href="#stations" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
-              <span class="pl-2 font-medium">Discover Shows</span>
-              <i class="flex items-center justify-center bi bi-arrow-down bg-black dark:bg-white text-white dark:text-black rounded-full p-1 w-[40px] h-[40px] text-center"></i>
-            </a>
-            <a href="#contact" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-2 text-xl rounded-full w-full flex gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
+          <div class="mt-auto flex justify-end w-full">
+            <a href="#contact" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-1.5 md:p-2 text-base md:text-xl rounded-full w-[75%] md:w-1/2 flex gap-2 md:gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
               <span class="pl-2 font-medium">Request Song</span>
-              <i class="flex items-center justify-center bi bi-music-note bg-black dark:bg-white text-white dark:text-black rounded-full p-1 w-[40px] h-[40px] text-center"></i>
+              <i class="flex items-center justify-center bi bi-music-note bg-black dark:bg-white text-white dark:text-black rounded-full p-1 w-[32px] h-[32px] md:w-[40px] md:h-[40px] text-center text-sm md:text-base"></i>
             </a>
           </div>
         </div>

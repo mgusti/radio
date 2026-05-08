@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\News;
+use App\Models\Event;
 
 class AdminController {
     public function __construct() {
@@ -143,6 +144,75 @@ class AdminController {
             }
         }
         header('Location: /radio/' . ADMIN_SLUG);
+        exit;
+    }
+
+    public function calendar() {
+        $eventModel = new Event();
+        $events = $eventModel->all();
+        $title = 'Calendar Management - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/calendar.php';
+    }
+
+    public function createEvent() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? '';
+            $type = $_POST['type'] ?? 'program';
+            $event_date = $_POST['event_date'] ?? date('Y-m-d');
+            $description = $_POST['description'] ?? '';
+
+            $eventModel = new Event();
+            $eventModel->create($title, $type, $event_date, $description);
+            
+            $_SESSION['success_msg'] = "Event created successfully!";
+            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            exit;
+        }
+        $title = 'Create Event - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/create_event.php';
+    }
+
+    public function editEvent() {
+        $id = $_GET['id'] ?? null;
+        if (!$id) {
+            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            exit;
+        }
+
+        $eventModel = new Event();
+        $event = $eventModel->find($id);
+        if (!$event) {
+            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? '';
+            $type = $_POST['type'] ?? 'program';
+            $event_date = $_POST['event_date'] ?? date('Y-m-d');
+            $description = $_POST['description'] ?? '';
+
+            $eventModel->update($id, $title, $type, $event_date, $description);
+            
+            $_SESSION['success_msg'] = "Event updated successfully!";
+            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            exit;
+        }
+
+        $title = 'Edit Event - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/edit_event.php';
+    }
+
+    public function deleteEvent() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id) {
+                $eventModel = new Event();
+                $eventModel->delete($id);
+                $_SESSION['success_msg'] = "Event deleted successfully!";
+            }
+        }
+        header('Location: /radio/' . ADMIN_SLUG . '/calendar');
         exit;
     }
 

@@ -9,6 +9,7 @@ use App\Controllers\NewsController;
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/news', [NewsController::class, 'index']);
 $router->get('/news/view', [NewsController::class, 'show']);
+$router->get('/calendar', [\App\Controllers\CalendarController::class, 'index']);
 
 
 // Admin Auth Routes
@@ -25,6 +26,14 @@ $router->post('/' . ADMIN_SLUG . '/news/create', [AdminController::class, 'creat
 $router->get('/' . ADMIN_SLUG . '/news/edit', [AdminController::class, 'editNews']);
 $router->post('/' . ADMIN_SLUG . '/news/edit', [AdminController::class, 'editNews']);
 $router->post('/' . ADMIN_SLUG . '/news/delete', [AdminController::class, 'deleteNews']);
+
+// Admin Calendar Routes
+$router->get('/' . ADMIN_SLUG . '/calendar', [AdminController::class, 'calendar']);
+$router->get('/' . ADMIN_SLUG . '/calendar/create', [AdminController::class, 'createEvent']);
+$router->post('/' . ADMIN_SLUG . '/calendar/create', [AdminController::class, 'createEvent']);
+$router->get('/' . ADMIN_SLUG . '/calendar/edit', [AdminController::class, 'editEvent']);
+$router->post('/' . ADMIN_SLUG . '/calendar/edit', [AdminController::class, 'editEvent']);
+$router->post('/' . ADMIN_SLUG . '/calendar/delete', [AdminController::class, 'deleteEvent']);
 
 // Admin Settings
 $router->get('/' . ADMIN_SLUG . '/settings', [AdminController::class, 'settings']);
