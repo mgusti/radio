@@ -1,0 +1,1 @@
+<?php $pdo=new PDO("mysql:host=127.0.0.1;dbname=radio_db;charset=utf8mb4","root","" ); $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); foreach($pdo->query("DESCRIBE users") as $row){ echo implode(" | ", $row).PHP_EOL; } ?>

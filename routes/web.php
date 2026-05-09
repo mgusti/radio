@@ -21,11 +21,21 @@ $router->get('/' . ADMIN_SLUG . '/logout', [AuthController::class, 'logout']);
 // Admin CRUD Routes
 use App\Controllers\AdminController;
 $router->get('/' . ADMIN_SLUG, [AdminController::class, 'dashboard']);
+$router->get('/' . ADMIN_SLUG . '/news', [AdminController::class, 'allNews']);
 $router->get('/' . ADMIN_SLUG . '/news/create', [AdminController::class, 'createNews']);
 $router->post('/' . ADMIN_SLUG . '/news/create', [AdminController::class, 'createNews']);
 $router->get('/' . ADMIN_SLUG . '/news/edit', [AdminController::class, 'editNews']);
 $router->post('/' . ADMIN_SLUG . '/news/edit', [AdminController::class, 'editNews']);
 $router->post('/' . ADMIN_SLUG . '/news/delete', [AdminController::class, 'deleteNews']);
+
+// Admin User Routes
+$router->get('/' . ADMIN_SLUG . '/users', [AdminController::class, 'users']);
+$router->get('/' . ADMIN_SLUG . '/users/create', [AdminController::class, 'createUser']);
+$router->post('/' . ADMIN_SLUG . '/users/create', [AdminController::class, 'createUser']);
+$router->get('/' . ADMIN_SLUG . '/users/edit', [AdminController::class, 'editUser']);
+$router->post('/' . ADMIN_SLUG . '/users/edit', [AdminController::class, 'editUser']);
+$router->post('/' . ADMIN_SLUG . '/users/delete', [AdminController::class, 'deleteUser']);
+$router->post('/' . ADMIN_SLUG . '/users/reset-password', [AdminController::class, 'resetUserPassword']);
 
 // Admin Calendar Routes
 $router->get('/' . ADMIN_SLUG . '/calendar', [AdminController::class, 'calendar']);

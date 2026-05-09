@@ -5,8 +5,8 @@ require_once __DIR__ . '/layout_header.php';
 
 <div class="max-w-3xl">
     <div class="mb-8">
-        <a href="/radio/<?= ADMIN_SLUG ?>" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors mb-4">
-            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        <a href="/radio/<?= ADMIN_SLUG ?>/news" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors mb-4">
+            <i class="bi bi-arrow-left"></i> Back to All News
         </a>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Create News</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Publish a new article to the site.</p>
@@ -61,7 +61,7 @@ require_once __DIR__ . '/layout_header.php';
             <button type="submit" class="bg-black dark:bg-white dark:text-black text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-sm flex items-center gap-2">
                 <i class="bi bi-send"></i> Publish News
             </button>
-            <a href="/radio/<?= ADMIN_SLUG ?>" class="px-8 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <a href="/radio/<?= ADMIN_SLUG ?>/news" class="px-8 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                 Cancel
             </a>
         </div>

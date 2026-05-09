@@ -10,7 +10,12 @@ class News extends Model {
         return $stmt->execute([$title, $excerpt, $content, $image_url, $date, $author]);
     }
 
-    public function update($id, $title, $excerpt, $content, $image_url, $date) {
+    public function update($id, $title, $excerpt, $content, $image_url, $date, $author = null) {
+        if ($author !== null) {
+            $stmt = $this->db->prepare("UPDATE {$this->table} SET title = ?, excerpt = ?, content = ?, image_url = ?, date = ?, author = ? WHERE id = ?");
+            return $stmt->execute([$title, $excerpt, $content, $image_url, $date, $author, $id]);
+        }
+
         $stmt = $this->db->prepare("UPDATE {$this->table} SET title = ?, excerpt = ?, content = ?, image_url = ?, date = ? WHERE id = ?");
         return $stmt->execute([$title, $excerpt, $content, $image_url, $date, $id]);
     }

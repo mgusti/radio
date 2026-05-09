@@ -26,6 +26,7 @@ class AuthController {
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['is_super_admin'] = $user['id'] === 1;
                 header('Location: /radio/' . ADMIN_SLUG);
                 exit;
             } else {

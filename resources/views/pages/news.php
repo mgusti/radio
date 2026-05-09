@@ -27,9 +27,14 @@
                         <div class="p-6 flex flex-col flex-1">
                             <h3 class="text-xl font-bold mb-3 leading-tight text-gray-900 dark:text-white"><?= htmlspecialchars($news['title']) ?></h3>
                             <p class="text-gray-600 dark:text-gray-400 mb-6 flex-1"><?= htmlspecialchars($news['excerpt']) ?></p>
-                            <a href="/radio/news/view?id=<?= $news['id'] ?>" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-800 dark:hover:text-blue-300 transition-colors mt-auto group/link">
-                                Read More <i class="bi bi-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
-                            </a>
+                            <div class="flex items-center justify-between mt-auto">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    <i class="bi bi-person-circle mr-1"></i> <?= htmlspecialchars($news['author'] ?? 'Admin') ?>
+                                </p>
+                                <a href="/radio/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/link">
+                                    Read More <i class="bi bi-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
                         </div>
                     </article>
                 <?php endforeach; ?>

@@ -4,12 +4,17 @@ namespace App\Controllers;
 
 use App\Models\News;
 use App\Models\Event;
+use App\Models\User;
 
 class AdminController {
     public function __construct() {
         if (!isset($_SESSION['user_id'])) {
             header('Location: /radio/' . ADMIN_SLUG . '/login');
             exit;
+        }
+
+        if (!isset($_SESSION['is_super_admin'])) {
+            $_SESSION['is_super_admin'] = ($_SESSION['user_id'] ?? null) === 1;
         }
     }
 
@@ -22,25 +27,171 @@ class AdminController {
         $upcomingEvent = $eventModel->upcoming();
         $latestEvent = $eventModel->latest();
 
-        $title = 'Admin Dashboard - GibelFm';
+        $title = $this->isSuperAdmin() ? 'Admin Dashboard - GibelFm' : 'User Dashboard - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/dashboard.php';
+    }
+
+    private function isSuperAdmin() {
+        return isset($_SESSION['is_super_admin']) && $_SESSION['is_super_admin'];
+    }
+
+    private function requireSuperAdmin() {
+        if (!$this->isSuperAdmin()) {
+            header('Location: /radio/' . ADMIN_SLUG);
+            exit;
+        }
+    }
+
+    public function allNews() {
+        $newsModel = new News();
+        $news = $newsModel->all();
+
+        $title = 'All News - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/all_news.php';
+    }
+
+    public function users() {
+        $this->requireSuperAdmin();
+
+        $userModel = new User();
+        $users = $userModel->allRegularUsers();
+
+        $title = 'User Management - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/users.php';
+    }
+
+    public function createUser() {
+        $this->requireSuperAdmin();
+
+        $userModel = new User();
+        $error = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $author_name = trim($_POST['author_name'] ?? '');
+
+            if (!preg_match('/^[a-z0-9]+$/', $username)) {
+                $error = 'Username must contain only lowercase letters and numbers, without spaces.';
+            } elseif (empty($password)) {
+                $error = 'Password is required.';
+            } elseif (empty($author_name)) {
+                $error = 'Author name is required.';
+            } elseif ($userModel->findByUsername($username)) {
+                $error = 'Username already exists.';
+            } else {
+                $userModel->create($username, $password, $author_name);
+                $_SESSION['success_msg'] = 'User created successfully!';
+                header('Location: /radio/' . ADMIN_SLUG . '/users');
+                exit;
+            }
+        }
+
+        $title = 'Create User - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/create_user.php';
+    }
+
+    public function editUser() {
+        $this->requireSuperAdmin();
+
+        $id = $_GET['id'] ?? null;
+        if (!$id || $id == 1) {
+            header('Location: /radio/' . ADMIN_SLUG . '/users');
+            exit;
+        }
+
+        $userModel = new User();
+        $user = $userModel->find($id);
+        if (!$user) {
+            header('Location: /radio/' . ADMIN_SLUG . '/users');
+            exit;
+        }
+
+        $error = null;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'] ?? '';
+            $author_name = trim($_POST['author_name'] ?? '');
+
+            if (!preg_match('/^[a-z0-9]+$/', $username)) {
+                $error = 'Username must contain only lowercase letters and numbers, without spaces.';
+            } elseif (empty($author_name)) {
+                $error = 'Author name is required.';
+            } else {
+                $existingUser = $userModel->findByUsername($username);
+                if ($existingUser && $existingUser['id'] != $id) {
+                    $error = 'Username already exists.';
+                } else {
+                    $userModel->update($id, $username, null, $author_name);
+                    $_SESSION['success_msg'] = 'User updated successfully!';
+                    header('Location: /radio/' . ADMIN_SLUG . '/users');
+                    exit;
+                }
+            }
+        }
+
+        $title = 'Edit User - GibelFm';
+        require_once __DIR__ . '/../../resources/views/admin/edit_user.php';
+    }
+
+    public function deleteUser() {
+        $this->requireSuperAdmin();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id && $id != 1) {
+                $userModel = new User();
+                $userModel->delete($id);
+                $_SESSION['success_msg'] = 'User deleted successfully!';
+            }
+        }
+        header('Location: /radio/' . ADMIN_SLUG . '/users');
+        exit;
+    }
+
+    public function resetUserPassword() {
+        $this->requireSuperAdmin();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            if ($id && $id != 1) {
+                $userModel = new User();
+                $userModel->resetPassword($id, '12345678');
+                $_SESSION['success_msg'] = 'Password reset to 12345678.';
+            }
+        }
+        header('Location: /radio/' . ADMIN_SLUG . '/users');
+        exit;
     }
 
     public function settings() {
         $userModel = new \App\Models\User();
         $user = $userModel->find($_SESSION['user_id']);
-        
-        $settingModel = new \App\Models\Setting();
-        $adminSlug = $settingModel->get('admin_slug', 'admin');
+        $authorName = $user['author_name'] ?? $user['username'];
+        $adminSlug = $this->isSuperAdmin() ? (new \App\Models\Setting())->get('admin_slug', 'admin') : ADMIN_SLUG;
+        $error = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'] ?? '';
             $password = $_POST['password'] ?? '';
-            
-            $userModel->update($_SESSION['user_id'], $username, $password ? $password : null);
-            $_SESSION['username'] = $username;
-            $_SESSION['success_msg'] = "Profile updated successfully!";
-            $user = $userModel->find($_SESSION['user_id']); // Refresh data
+            $author_name = trim($_POST['author_name'] ?? '');
+
+            if (!preg_match('/^[a-z0-9]+$/', $username)) {
+                $error = 'Username must contain only lowercase letters and numbers, without spaces.';
+            } elseif (empty($author_name)) {
+                $error = 'Author name is required.';
+            } else {
+                $existingUser = $userModel->findByUsername($username);
+                if ($existingUser && $existingUser['id'] != $_SESSION['user_id']) {
+                    $error = 'Username already exists.';
+                } else {
+                    $password = $password !== '' ? $password : null;
+                    $userModel->update($_SESSION['user_id'], $username, $password, $author_name);
+                    $_SESSION['username'] = $username;
+                    $_SESSION['success_msg'] = "Profile updated successfully!";
+                    $user = $userModel->find($_SESSION['user_id']); // Refresh data
+                    $authorName = $user['author_name'] ?? $user['username'];
+                }
+            }
         }
 
         $title = 'Settings - GibelFm';
@@ -48,6 +199,8 @@ class AdminController {
     }
 
     public function updateSlug() {
+        $this->requireSuperAdmin();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newSlug = $_POST['admin_slug'] ?? 'admin';
             // Simple validation: alphanumeric only, no spaces
@@ -79,11 +232,15 @@ class AdminController {
                 $image_url = $uploadedPath;
             }
 
+            $userModel = new User();
+            $currentUser = $userModel->find($_SESSION['user_id']);
+            $author = $currentUser['author_name'] ?? $currentUser['username'];
+
             $newsModel = new News();
-            $newsModel->create($title, $excerpt, $content, $image_url, $date);
+            $newsModel->create($title, $excerpt, $content, $image_url, $date, $author);
             
             $_SESSION['success_msg'] = "News created successfully!";
-            header('Location: /radio/' . ADMIN_SLUG);
+            header('Location: /radio/' . ADMIN_SLUG . '/news');
             exit;
         }
         $title = 'Create News - GibelFm';
@@ -93,14 +250,14 @@ class AdminController {
     public function editNews() {
         $id = $_GET['id'] ?? null;
         if (!$id) {
-            header('Location: /radio/' . ADMIN_SLUG);
+            header('Location: /radio/' . ADMIN_SLUG . '/news');
             exit;
         }
 
         $newsModel = new News();
         $news = $newsModel->find($id); // Get current data to check for changes
         if (!$news) {
-            header('Location: /radio/' . ADMIN_SLUG);
+            header('Location: /radio/' . ADMIN_SLUG . '/news');
             exit;
         }
 
@@ -129,10 +286,14 @@ class AdminController {
                 $image_url = $news['image_url'];
             }
 
-            $newsModel->update($id, $title, $excerpt, $content, $image_url, $date);
+            $userModel = new User();
+            $currentUser = $userModel->find($_SESSION['user_id']);
+            $author = $currentUser['author_name'] ?? $currentUser['username'];
+
+            $newsModel->update($id, $title, $excerpt, $content, $image_url, $date, $author);
             
             $_SESSION['success_msg'] = "News updated successfully!";
-            header('Location: /radio/' . ADMIN_SLUG);
+            header('Location: /radio/' . ADMIN_SLUG . '/news');
             exit;
         }
 
@@ -149,7 +310,7 @@ class AdminController {
                 $_SESSION['success_msg'] = "News deleted successfully!";
             }
         }
-        header('Location: /radio/' . ADMIN_SLUG);
+        header('Location: /radio/' . ADMIN_SLUG . '/news');
         exit;
     }
 

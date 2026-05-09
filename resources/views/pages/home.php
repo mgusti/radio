@@ -143,7 +143,7 @@
       </div>
 
       <div class="flex gap-4">
-        <a href="" class="w-full flex flex-col gap-2 group">
+        <a href="https://example.com/audio/lofi-beats.mp3" class="w-full flex flex-col gap-2 group">
           <div class="max-h-[300px] md:max-h-[500px] overflow-hidden rounded-xl shadow-xl relative">
             <i class="flex items-center justify-center text-white rounded-full bg-black p-3 bi bi-play-fill absolute top-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></i>
             <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity z-0"></div>
@@ -156,7 +156,7 @@
             Relaxing beats and chill vibes for studying or working.
           </p>
         </a>
-        <a href="" class="w-full flex flex-col gap-2 group">
+        <a href="https://example.com/audio/global-news.mp3" class="w-full flex flex-col gap-2 group">
           <div class="max-h-[300px] md:max-h-[500px] overflow-hidden rounded-xl shadow-xl relative">
             <i class="flex items-center justify-center text-white rounded-full bg-black p-3 bi bi-play-fill absolute top-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></i>
             <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity z-0"></div>
@@ -169,7 +169,7 @@
             24/7 coverage of world events and current affairs.
           </p>
         </a>
-        <a href="" class="w-full hidden md:flex flex-col gap-2 group">
+        <a href="https://example.com/audio/classic-rock.mp3" class="w-full hidden md:flex flex-col gap-2 group">
           <div class="max-h-[300px] md:max-h-[500px] overflow-hidden rounded-xl shadow-xl relative">
             <i class="flex items-center justify-center text-white rounded-full bg-black p-3 bi bi-play-fill absolute top-4 right-4 text-xl opacity-0 group-hover:opacity-100 transition-opacity z-10"></i>
             <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity z-0"></div>
@@ -207,7 +207,7 @@
         </div>
 
         <div class="flex gap-4">
-          <a href="" class="w-full flex flex-col gap-2 group">
+          <a href="https://example.com/audio/tech-today-ep42.mp3" class="w-full flex flex-col gap-2 group">
             <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
               <i class="flex items-center justify-center text-white rounded-full bg-black p-2 bi bi-headphones absolute top-4 right-4 group-hover:bg-blue-600 transition-colors z-10"></i>
               <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
@@ -218,7 +218,7 @@
                 class="lg:ml-auto text-gray-500 dark:text-gray-400 font-bold text-sm mt-1 lg:mt-0">Ep. 42</span></h3>
             <p class="text-sm text-gray-600 dark:text-gray-400">The latest in AI and software.</p>
           </a>
-          <a href="" class="w-full flex flex-col gap-2 group">
+          <a href="https://example.com/audio/true-crime-hour-ep12.mp3" class="w-full flex flex-col gap-2 group">
             <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
               <i class="flex items-center justify-center text-white rounded-full bg-black p-2 bi bi-headphones absolute top-4 right-4 group-hover:bg-blue-600 transition-colors z-10"></i>
               <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
@@ -229,7 +229,7 @@
                 class="lg:ml-auto text-gray-500 dark:text-gray-400 font-bold text-sm mt-1 lg:mt-0">Ep. 12</span></h3>
             <p class="text-sm text-gray-600 dark:text-gray-400">Unsolved mysteries explored.</p>
           </a>
-          <a href="" class="w-full hidden md:flex flex-col gap-2 group">
+          <a href="https://example.com/audio/mindful-mornings-daily.mp3" class="w-full hidden md:flex flex-col gap-2 group">
             <div class="max-h-[300px] md:max-h-[400px] overflow-hidden rounded-xl shadow-xl relative">
               <i class="flex items-center justify-center text-white rounded-full bg-black p-2 bi bi-headphones absolute top-4 right-4 group-hover:bg-blue-600 transition-colors z-10"></i>
               <img class="w-full object-cover h-full transform group-hover:scale-105 transition-transform duration-500"
@@ -275,9 +275,14 @@
                 <div class="p-6 flex flex-col flex-1">
                   <h3 class="text-xl font-bold mb-2 line-clamp-2 text-gray-900 dark:text-white"><?= htmlspecialchars($news['title']) ?></h3>
                   <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3"><?= htmlspecialchars($news['excerpt']) ?></p>
-                  <a href="/radio/news" class="mt-auto text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
-                    Read Story <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
-                  </a>
+                  <div class="flex items-center justify-between mt-auto">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      <i class="bi bi-person-circle mr-1"></i> <?= htmlspecialchars($news['author'] ?? 'Admin') ?>
+                    </p>
+                    <a href="/radio/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
+                      Read More <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                    </a>
+                  </div>
                 </div>
               </article>
             <?php endforeach; ?>

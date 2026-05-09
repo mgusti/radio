@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title ?? 'Admin Panel') ?></title>
+    <title><?= htmlspecialchars($title ?? 'User Panel') ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class' }</script>
     <script>
@@ -41,7 +41,7 @@
                 </div>
                 <div>
                     <span class="font-bold text-lg text-gray-900 dark:text-white leading-none block">GibelFm</span>
-                    <span class="text-xs text-gray-400 font-medium tracking-wider uppercase">Admin Panel</span>
+                    <span class="text-xs text-gray-400 font-medium tracking-wider uppercase"><?= ($_SESSION['is_super_admin'] ?? false) ? 'Admin Panel' : 'User Panel' ?></span>
                 </div>
             </a>
         </div>
@@ -55,7 +55,7 @@
             </a>
 
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">News</p>
-            <a href="/radio/<?= ADMIN_SLUG ?>" class="sidebar-link <?= $activeSection === 'news' ? 'active' : '' ?>">
+            <a href="/radio/<?= ADMIN_SLUG ?>/news" class="sidebar-link <?= $activeSection === 'news' ? 'active' : '' ?>">
                 <i class="bi bi-newspaper text-base"></i>
                 <span>All News</span>
             </a>
@@ -65,6 +65,14 @@
                 <i class="bi bi-calendar3 text-base"></i>
                 <span>All Events</span>
             </a>
+
+            <?php if ($_SESSION['is_super_admin'] ?? false): ?>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Users</p>
+                <a href="/radio/<?= ADMIN_SLUG ?>/users" class="sidebar-link <?= $activeSection === 'users' ? 'active' : '' ?>">
+                    <i class="bi bi-people-fill text-base"></i>
+                    <span>Manage Users</span>
+                </a>
+            <?php endif; ?>
 
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">System</p>
             <a href="/radio/<?= ADMIN_SLUG ?>/settings" class="sidebar-link <?= $activeSection === 'settings' ? 'active' : '' ?>">
@@ -81,7 +89,7 @@
                 </div>
                 <div class="flex-1 min-w-0">
                     <p class="text-sm font-semibold text-gray-900 dark:text-white truncate"><?= htmlspecialchars($_SESSION['username'] ?? 'Admin') ?></p>
-                    <p class="text-xs text-gray-400">Administrator</p>
+                    <p class="text-xs text-gray-400"><?= ($_SESSION['is_super_admin'] ?? false) ? 'Administrator' : 'User' ?></p>
                 </div>
                 <a href="/radio/<?= ADMIN_SLUG ?>/logout" title="Logout" class="text-red-400 hover:text-red-600 transition-colors">
                     <i class="bi bi-box-arrow-right text-lg"></i>
@@ -95,7 +103,7 @@
         <!-- Top Bar -->
         <header class="bg-white dark:bg-[#121212] border-b border-gray-100 dark:border-white/5 px-8 py-4 flex justify-between items-center flex-shrink-0">
             <div>
-                <h1 class="text-xl font-bold text-gray-900 dark:text-white"><?= htmlspecialchars($title ?? 'Admin') ?></h1>
+                <h1 class="text-xl font-bold text-gray-900 dark:text-white"><?= htmlspecialchars($title ?? 'User') ?></h1>
             </div>
             <div class="flex items-center gap-3">
                 <a href="/radio/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-1.5">

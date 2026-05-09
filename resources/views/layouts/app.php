@@ -19,6 +19,7 @@
     }
   </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -103,11 +104,17 @@
         <div class="mt-12 pt-12 border-t border-gray-100 dark:border-white/10">
           <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Follow Us</p>
           <div class="flex gap-4">
-            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
-              <i class="bi bi-instagram"></i>
+            <a href="https://www.facebook.com/gibelfm/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
-              <i class="bi bi-twitter-x"></i>
+            <a href="https://www.tiktok.com/@djun_23?_r=1&_t=ZS-969M0HYrlSi" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/radiogibelfmnews/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              <i class="fab fa-instagram"></i>
             </a>
           </div>
         </div>
@@ -127,11 +134,17 @@
     <div class="gap-8 flex flex-col md:flex-row justify-between mx-auto max-w-7xl w-full">
       <div class="flex items-center space-x-6">
         <span class="inline-flex gap-3">
-          <a href="#" class="text-xl transition hover:text-blue-500 dark:text-gray-400 dark:hover:text-white">
-            <i class="bi bi-twitter-x"></i>
+          <a href="https://www.facebook.com/gibelfm/" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+            <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="#" class="text-xl transition hover:text-pink-500 dark:text-gray-400 dark:hover:text-white">
-            <i class="bi bi-instagram"></i>
+          <a href="https://www.tiktok.com/@djun_23?_r=1&_t=ZS-969M0HYrlSi" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-black dark:text-gray-400 dark:hover:text-white">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-sky-500 dark:text-gray-400 dark:hover:text-white">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/radiogibelfmnews/" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-pink-500 dark:text-gray-400 dark:hover:text-white">
+            <i class="fab fa-instagram"></i>
           </a>
         </span>
       </div>
