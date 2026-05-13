@@ -1,18 +1,7 @@
 <section class="p-4 py-5" data-aos="fade-down" data-aos-duration="1000">
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex flex-col gap-10 items-center">
-        <div class="flex gap-4 items-center">
-          <div class="flex gap-1">
-            <i class="bi bi-star-fill text-yellow-400"></i>
-            <i class="bi bi-star-fill text-yellow-400"></i>
-            <i class="bi bi-star-fill text-yellow-400"></i>
-            <i class="bi bi-star-fill text-yellow-400"></i>
-            <i class="bi bi-star-fill text-yellow-400"></i>
-          </div>
-          <span class="text-xs text-gray-600 dark:text-gray-400">
-            4.8/5 (45k listeners)
-          </span>
-        </div>
+        <img src="/radio/public/img/banner.jpeg" alt="Banner" class="w-full max-w-7xl mx-auto rounded-lg shadow-lg max-h-[460px] object-cover">
         <h1 class="text-2xl lg:text-5xl text-center text-gray-900 dark:text-white">
           Radio Gibel_Fm
           <span class="block text-gray-400 dark:text-gray-500 pt-4">The Spirit of Muaro Jambi</span>
@@ -126,7 +115,7 @@
     </div>
   </section>
 
-  <section class="p-4 py-20" id="stations">
+  <!-- <section class="p-4 py-20" id="stations">
     <div class="w-full max-w-7xl mx-auto">
       <div class="pb-8 flex justify-between items-center gap-8">
         <h2 class="text-4xl lg:text-5xl pb-4 font-semibold text-gray-900 dark:text-white">
@@ -247,7 +236,7 @@
         </a>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="p-4 py-20 bg-gray-50/50 dark:bg-white/5 transition-colors">
     <div class="w-full max-w-7xl mx-auto">

@@ -69,9 +69,9 @@
                     <a href="https://www.tiktok.com/@djun_23?_r=1&_t=ZS-969M0HYrlSi" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all">
+                    <!-- <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all">
                         <i class="fab fa-x-twitter"></i>
-                    </a>
+                    </a> -->
                     <a href="https://www.instagram.com/radiogibelfmnews/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all">
                         <i class="fab fa-instagram"></i>
                     </a>

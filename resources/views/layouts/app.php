@@ -110,9 +110,9 @@
             <a href="https://www.tiktok.com/@djun_23?_r=1&_t=ZS-969M0HYrlSi" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
               <i class="fab fa-tiktok"></i>
             </a>
-            <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+            <!-- <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
               <i class="fab fa-x-twitter"></i>
-            </a>
+            </a> -->
             <a href="https://www.instagram.com/radiogibelfmnews/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
               <i class="fab fa-instagram"></i>
             </a>
@@ -140,9 +140,9 @@
           <a href="https://www.tiktok.com/@djun_23?_r=1&_t=ZS-969M0HYrlSi" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-black dark:text-gray-400 dark:hover:text-white">
             <i class="fab fa-tiktok"></i>
           </a>
-          <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-sky-500 dark:text-gray-400 dark:hover:text-white">
+          <!-- <a href="https://x.com/Junaedi39863173" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-sky-500 dark:text-gray-400 dark:hover:text-white">
             <i class="fab fa-x-twitter"></i>
-          </a>
+          </a> -->
           <a href="https://www.instagram.com/radiogibelfmnews/" target="_blank" rel="noopener noreferrer" class="text-xl transition hover:text-pink-500 dark:text-gray-400 dark:hover:text-white">
             <i class="fab fa-instagram"></i>
           </a>
