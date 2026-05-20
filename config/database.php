@@ -11,7 +11,7 @@ class Database {
 
     private $host = '127.0.0.1';
     private $user = 'root';
-    private $pass = '';
+    private $pass = 'Rsudham01';
     private $dbname = 'radio_db';
 
     private function __construct() {
