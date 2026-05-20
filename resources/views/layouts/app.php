@@ -43,16 +43,8 @@
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex justify-between gap-8 items-center">
         <div>
-<<<<<<< HEAD
           <a href="<?= rtrim($baseUrl, '/') ?>/" class="font-bold text-3xl md:text-4xl">
             <span class="border-b-4 border-black dark:border-white transition-colors">99,7</span> GIBEL FM
-=======
-          <a href="<?= rtrim($baseUrl, '/') ?>/" class="font-bold text-3xl md:text-4xl flex items-center gap-3">
-            <img src="<?= $baseUrl ?>img/gibelfm.jpeg" alt="GibelFm logo" class="w-10 h-10 rounded-full object-cover">
-            <span>
-              <span class="border-b-4 border-black dark:border-white transition-colors">Gibel</span>Fm
-            </span>
->>>>>>> e5287fdcb1b89454a471afa5e90a4bb238bfed11
           </a>
         </div>
         
@@ -159,7 +151,7 @@
           </a>
         </span>
       </div>
-      <p class="text-gray-600 dark:text-gray-400">&copy; <?= date('Y') ?> GibelFm • The Spirit of Muaro Jambi</p>
+      <p class="text-gray-600 dark:text-gray-400">&copy; <?= date('Y') ?> GibelFM • The Spirit of Muaro Jambi</p>
       <div class="text-sm font-medium text-gray-500 dark:text-gray-600">
         Copyright © <span><?= date('Y') ?></span>
       </div>

@@ -2,15 +2,10 @@
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex flex-col gap-10 items-center">
         <img src="/radio/public/img/banner.jpeg" alt="Banner" class="w-full max-w-7xl mx-auto rounded-lg shadow-lg max-h-[460px] object-cover">
-<<<<<<< HEAD
         <h1 class="text-2xl lg:text-5xl text-center text-gray-900 dark:text-white">
           Radio Gibel_FM
-=======
-        <!-- <h1 class="text-2xl lg:text-5xl text-center text-gray-900 dark:text-white">
-          Radio Gibel_Fm
->>>>>>> e5287fdcb1b89454a471afa5e90a4bb238bfed11
           <span class="block text-gray-400 dark:text-gray-500 pt-4">The Spirit of Muaro Jambi</span>
-        </h1> -->
+        </h1>
         
 
 
