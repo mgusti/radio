@@ -1,15 +1,23 @@
+<?php
+$months = [
+    'January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret', 'April' => 'April',
+    'May' => 'Mei', 'June' => 'Juni', 'July' => 'Juli', 'August' => 'Agustus',
+    'September' => 'September', 'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'
+];
+$monthYearStr = ($months[date('F')] ?? date('F')) . date(' Y');
+?>
 <section class="p-4 py-16" data-aos="fade-up" data-aos-duration="1000">
     <div class="w-full max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div>
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">Program Calendar</h1>
-                <p class="text-gray-500 dark:text-gray-400 text-lg">Stay tuned with our upcoming shows and community events.</p>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">Kalender Program</h1>
+                <p class="text-gray-500 dark:text-gray-400 text-lg">Pantau terus acara mendatang dan kegiatan komunitas kami.</p>
             </div>
             <div class="flex items-center gap-4 bg-gray-50 dark:bg-white/5 p-2 rounded-2xl border border-gray-100 dark:border-white/10 transition-colors">
                 <button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
                     <i class="bi bi-chevron-left"></i>
                 </button>
-                <span class="text-xl font-bold px-4 text-gray-900 dark:text-white"><?= date('F Y') ?></span>
+                <span class="text-xl font-bold px-4 text-gray-900 dark:text-white"><?= $monthYearStr ?></span>
                 <button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
                     <i class="bi bi-chevron-right"></i>
                 </button>
@@ -20,13 +28,13 @@
         <div class="bg-white dark:bg-[#121212] rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-white/10 transition-colors">
             <!-- Days Header -->
             <div class="grid grid-cols-7 bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs py-4 text-center">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
+                <div>Min</div>
+                <div>Sen</div>
+                <div>Sel</div>
+                <div>Rab</div>
+                <div>Kam</div>
+                <div>Jum</div>
+                <div>Sab</div>
             </div>
 
             <!-- Calendar Days -->
@@ -112,19 +120,19 @@
         <div class="mt-8 flex flex-wrap gap-6 justify-center">
             <div class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Radio Programs</span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Program Radio</span>
             </div>
             <div class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-purple-500"></span>
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Community Events</span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Kegiatan Komunitas</span>
             </div>
             <div class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Current Event</span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Hari Ini</span>
             </div>
             <div class="flex items-center gap-2">
                 <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Upcoming Event</span>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Acara Mendatang</span>
             </div>
         </div>
     </div>

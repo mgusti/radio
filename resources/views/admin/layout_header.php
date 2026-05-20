@@ -22,7 +22,7 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <style>
+    <style type="text/tailwindcss">
         body { font-family: 'Outfit', sans-serif; }
         .sidebar-link { @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all; }
         .sidebar-link.active { @apply bg-black dark:bg-white text-white dark:text-black; }
@@ -47,37 +47,41 @@
         </div>
 
         <!-- Navigation -->
-        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
-            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-2 pb-1">Main</p>
+        <nav class="flex-1 p-4 space-y-1">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-2 pb-1">Menu</p>
             <a href="/radio/<?= ADMIN_SLUG ?>" class="sidebar-link <?= $activeSection === 'dashboard' ? 'active' : '' ?>">
                 <i class="bi bi-grid-1x2-fill text-base"></i>
                 <span>Dashboard</span>
             </a>
-
-            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">News</p>
-            <a href="/radio/<?= ADMIN_SLUG ?>/news" class="sidebar-link <?= $activeSection === 'news' ? 'active' : '' ?>">
-                <i class="bi bi-newspaper text-base"></i>
-                <span>All News</span>
+            <a href="/radio/<?= ADMIN_SLUG ?>/profile" class="sidebar-link <?= $activeSection === 'profile' ? 'active' : '' ?>">
+                <i class="bi bi-file-earmark-person-fill text-base"></i>
+                <span>Edit Profil</span>
             </a>
 
-            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Calendar</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Berita</p>
+            <a href="/radio/<?= ADMIN_SLUG ?>/news" class="sidebar-link <?= $activeSection === 'news' ? 'active' : '' ?>">
+                <i class="bi bi-newspaper text-base"></i>
+                <span>Semua Berita</span>
+            </a>
+
+            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Jadwal</p>
             <a href="/radio/<?= ADMIN_SLUG ?>/calendar" class="sidebar-link <?= $activeSection === 'calendar' ? 'active' : '' ?>">
                 <i class="bi bi-calendar3 text-base"></i>
-                <span>All Events</span>
+                <span>Semua Acara</span>
             </a>
 
             <?php if ($_SESSION['is_super_admin'] ?? false): ?>
-                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Users</p>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">User</p>
                 <a href="/radio/<?= ADMIN_SLUG ?>/users" class="sidebar-link <?= $activeSection === 'users' ? 'active' : '' ?>">
                     <i class="bi bi-people-fill text-base"></i>
-                    <span>Manage Users</span>
+                    <span>Kelola User</span>
                 </a>
             <?php endif; ?>
 
-            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">System</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Sistem</p>
             <a href="/radio/<?= ADMIN_SLUG ?>/settings" class="sidebar-link <?= $activeSection === 'settings' ? 'active' : '' ?>">
                 <i class="bi bi-gear-fill text-base"></i>
-                <span>Settings</span>
+                <span>Pengaturan</span>
             </a>
         </nav>
 
@@ -107,7 +111,7 @@
             </div>
             <div class="flex items-center gap-3">
                 <a href="/radio/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-1.5">
-                    <i class="bi bi-box-arrow-up-right text-xs"></i> View Site
+                    <i class="bi bi-box-arrow-up-right text-xs"></i> Lihat Web
                 </a>
                 <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/10 transition-all text-gray-600 dark:text-gray-400">
                     <i class="bi bi-moon-stars-fill dark:hidden text-sm"></i>

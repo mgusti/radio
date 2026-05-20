@@ -27,7 +27,7 @@ class CalendarController {
         }
 
         view('calendar', [
-            'title'  => 'Program Calendar - GibelFm',
+            'title'  => 'Kalender Program - GibelFm',
             'events' => $events,
             'today' => $today,
             'upcomingDate' => $upcomingDate,

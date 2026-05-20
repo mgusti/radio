@@ -11,7 +11,7 @@ class AuthController {
             header('Location: /radio/' . ADMIN_SLUG);
             exit;
         }
-        $title = 'Admin Login - GibelFm';
+        $title = 'Login Admin - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/login.php';
     }
 
@@ -30,8 +30,8 @@ class AuthController {
                 header('Location: /radio/' . ADMIN_SLUG);
                 exit;
             } else {
-                $error = 'Invalid username or password';
-                $title = 'Admin Login - GibelFm';
+                $error = 'Username atau password salah';
+                $title = 'Login Admin - GibelFm';
                 require_once __DIR__ . '/../../resources/views/admin/login.php';
             }
         }

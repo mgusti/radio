@@ -14,7 +14,7 @@ class HomeController {
 
         // Pass data to view
         view('home', [
-            'title' => 'Radio Player - Live Stream',
+            'title' => 'Pemutar Radio - Siaran Langsung',
             'streamUrl' => $streamUrl,
             'latestNews' => $latestNews
         ]);

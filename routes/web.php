@@ -2,6 +2,7 @@
 
 use App\Controllers\HomeController;
 use App\Controllers\NewsController;
+use App\Controllers\ProfileController;
 
 // Define Routes
 /** @var Router $router */
@@ -10,6 +11,7 @@ $router->get('/', [HomeController::class, 'index']);
 $router->get('/news', [NewsController::class, 'index']);
 $router->get('/news/view', [NewsController::class, 'show']);
 $router->get('/calendar', [\App\Controllers\CalendarController::class, 'index']);
+$router->get('/profile', [ProfileController::class, 'index']);
 
 
 // Admin Auth Routes
@@ -49,3 +51,7 @@ $router->post('/' . ADMIN_SLUG . '/calendar/delete', [AdminController::class, 'd
 $router->get('/' . ADMIN_SLUG . '/settings', [AdminController::class, 'settings']);
 $router->post('/' . ADMIN_SLUG . '/settings', [AdminController::class, 'settings']);
 $router->post('/' . ADMIN_SLUG . '/settings/slug', [AdminController::class, 'updateSlug']);
+
+// Admin Station Profile
+$router->get('/' . ADMIN_SLUG . '/profile', [AdminController::class, 'editProfile']);
+$router->post('/' . ADMIN_SLUG . '/profile', [AdminController::class, 'editProfile']);

@@ -1,7 +1,7 @@
 <section class="p-4 py-10" data-aos="fade-down" data-aos-duration="1000">
     <div class="w-full max-w-7xl mx-auto text-center">
-        <h1 class="text-4xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white">Latest Updates</h1>
-        <p class="text-gray-500 dark:text-gray-400 text-lg">Stay informed with the newest trends and stories.</p>
+        <h1 class="text-4xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white">Berita Terbaru</h1>
+        <p class="text-gray-500 dark:text-gray-400 text-lg">Dapatkan informasi terkini dan berita terbaru dari kami.</p>
     </div>
 </section>
 
@@ -17,7 +17,7 @@
                             <?php else: ?>
                                 <div class="flex flex-col items-center justify-center text-gray-300 dark:text-gray-700">
                                     <i class="bi bi-image text-5xl"></i>
-                                    <span class="text-xs font-black uppercase tracking-widest mt-2">No Image</span>
+                                    <span class="text-xs font-black uppercase tracking-widest mt-2">Tidak Ada Gambar</span>
                                 </div>
                             <?php endif; ?>
                             <div class="absolute top-4 right-4 bg-black bg-opacity-70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide">
@@ -32,7 +32,7 @@
                                     <i class="bi bi-person-circle mr-1"></i> <?= htmlspecialchars($news['author'] ?? 'Admin') ?>
                                 </p>
                                 <a href="/radio/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/link">
-                                    Read More <i class="bi bi-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
+                                    Selengkapnya <i class="bi bi-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
                                 </a>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="col-span-full text-center py-20 text-gray-500 dark:text-gray-400">
-                    <p class="text-xl">No news available at the moment.</p>
+                    <p class="text-xl">Belum ada berita saat ini.</p>
                 </div>
             <?php endif; ?>
         </div>

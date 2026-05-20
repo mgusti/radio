@@ -18,7 +18,7 @@ class NewsController {
         $newsItems = $newsModel->paginate($limit, $offset);
 
         view('news', [
-            'title' => 'Latest News - GibelFm',
+            'title' => 'Berita Terbaru - GibelFm',
             'newsItems' => $newsItems,
             'currentPage' => $page,
             'totalPages' => $totalPages

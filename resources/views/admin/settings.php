@@ -5,8 +5,8 @@ require_once __DIR__ . '/layout_header.php';
 
 <div class="max-w-4xl">
     <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Settings</h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage your account and system security.</p>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Pengaturan</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Kelola akun dan keamanan sistem Anda.</p>
     </div>
 
     <?php if (isset($_SESSION['success_msg'])): ?>
@@ -31,29 +31,29 @@ require_once __DIR__ . '/layout_header.php';
                 <div class="w-8 h-8 bg-blue-50 dark:bg-blue-500/10 rounded-lg flex items-center justify-center">
                     <i class="bi bi-person-circle text-blue-500 text-sm"></i>
                 </div>
-                <?= ($_SESSION['is_super_admin'] ?? false) ? 'Admin Profile' : 'User Profile' ?>
+                <?= ($_SESSION['is_super_admin'] ?? false) ? 'Profil Admin' : 'Profil User' ?>
             </h3>
             <form action="/radio/<?= ADMIN_SLUG ?>/settings" method="POST" class="flex flex-col gap-5">
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Username</label>
                     <input type="text" name="username" required value="<?= htmlspecialchars($user['username']) ?>"
-                           pattern="[a-z0-9]+" title="Lowercase letters and numbers only, no spaces"
+                           pattern="[a-z0-9]+" title="Hanya huruf kecil dan angka, tanpa spasi"
                            class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white">
-                    <p class="text-[11px] text-gray-400 mt-1">Use lowercase letters and digits only. No spaces allowed.</p>
+                    <p class="text-[11px] text-gray-400 mt-1">Gunakan huruf kecil dan angka saja. Spasi tidak diperbolehkan.</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Author Name</label>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nama Penulis</label>
                     <input type="text" name="author_name" required value="<?= htmlspecialchars($authorName) ?>"
                            class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white">
-                    <p class="text-[11px] text-gray-400 mt-1">This name will be shown in news articles.</p>
+                    <p class="text-[11px] text-gray-400 mt-1">Nama ini akan ditampilkan sebagai penulis berita.</p>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">New Password <span class="text-gray-400 font-normal text-xs">(leave blank to keep current)</span></label>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Password Baru <span class="text-gray-400 font-normal text-xs">(kosongkan jika tidak ingin diubah)</span></label>
                     <input type="password" name="password"
                            class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white">
                 </div>
                 <button type="submit" class="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-sm mt-2 flex items-center gap-2 justify-center">
-                    <i class="bi bi-person-check"></i> Update Profile
+                    <i class="bi bi-person-check"></i> Perbarui Profil
                 </button>
             </form>
         </div>
@@ -65,15 +65,15 @@ require_once __DIR__ . '/layout_header.php';
                     <div class="w-8 h-8 bg-red-50 dark:bg-red-500/10 rounded-lg flex items-center justify-center">
                         <i class="bi bi-shield-lock text-red-500 text-sm"></i>
                     </div>
-                    Security URL
+                    URL Keamanan
                 </h3>
                 <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">
-                    Change the admin URL suffix. Current: <code class="bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded text-gray-900 dark:text-white font-mono text-xs">/radio/<?= ADMIN_SLUG ?></code>
+                    Ubah URL halaman admin. Saat ini: <code class="bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded text-gray-900 dark:text-white font-mono text-xs">/radio/<?= ADMIN_SLUG ?></code>
                 </p>
                 <form action="/radio/<?= ADMIN_SLUG ?>/settings/slug" method="POST" class="flex flex-col gap-5"
-                      onsubmit="return confirm('Warning: Changing the admin URL will redirect you. Remember the new address!');">
+                      onsubmit="return confirm('Peringatan: Mengubah URL admin akan mengalihkan Anda. Jangan lupa alamat barunya!');">
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Admin URL Slug</label>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Slug URL Admin</label>
                         <div class="flex items-center bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden focus-within:ring-2 focus-within:ring-red-500 transition-all">
                             <span class="px-4 text-gray-400 font-medium text-sm">/radio/</span>
                             <input type="text" name="admin_slug" required value="<?= htmlspecialchars(ADMIN_SLUG) ?>"
@@ -81,7 +81,7 @@ require_once __DIR__ . '/layout_header.php';
                         </div>
                     </div>
                     <button type="submit" class="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors shadow-sm mt-2 flex items-center gap-2 justify-center">
-                        <i class="bi bi-shield-exclamation"></i> Change URL Slug
+                        <i class="bi bi-shield-exclamation"></i> Ubah Slug URL
                     </button>
                 </form>
             </div>
