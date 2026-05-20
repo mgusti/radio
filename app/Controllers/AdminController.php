@@ -27,7 +27,7 @@ class AdminController {
         $upcomingEvent = $eventModel->upcoming();
         $latestEvent = $eventModel->latest();
 
-        $title = $this->isSuperAdmin() ? 'Admin Dashboard - GibelFm' : 'User Dashboard - GibelFm';
+        $title = $this->isSuperAdmin() ? 'Dashboard Admin - GibelFm' : 'Dashboard User - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/dashboard.php';
     }
 
@@ -46,7 +46,7 @@ class AdminController {
         $newsModel = new News();
         $news = $newsModel->all();
 
-        $title = 'All News - GibelFm';
+        $title = 'Semua Berita - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/all_news.php';
     }
 
@@ -56,7 +56,7 @@ class AdminController {
         $userModel = new User();
         $users = $userModel->allRegularUsers();
 
-        $title = 'User Management - GibelFm';
+        $title = 'Kelola User - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/users.php';
     }
 
@@ -72,22 +72,22 @@ class AdminController {
             $author_name = trim($_POST['author_name'] ?? '');
 
             if (!preg_match('/^[a-z0-9]+$/', $username)) {
-                $error = 'Username must contain only lowercase letters and numbers, without spaces.';
+                $error = 'Username hanya boleh huruf kecil dan angka, tanpa spasi.';
             } elseif (empty($password)) {
-                $error = 'Password is required.';
+                $error = 'Password wajib diisi.';
             } elseif (empty($author_name)) {
-                $error = 'Author name is required.';
+                $error = 'Nama penulis wajib diisi.';
             } elseif ($userModel->findByUsername($username)) {
-                $error = 'Username already exists.';
+                $error = 'Username sudah terpakai.';
             } else {
                 $userModel->create($username, $password, $author_name);
-                $_SESSION['success_msg'] = 'User created successfully!';
+                $_SESSION['success_msg'] = 'User berhasil ditambahkan!';
                 header('Location: /radio/' . ADMIN_SLUG . '/users');
                 exit;
             }
         }
 
-        $title = 'Create User - GibelFm';
+        $title = 'Tambah User - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/create_user.php';
     }
 
@@ -113,16 +113,16 @@ class AdminController {
             $author_name = trim($_POST['author_name'] ?? '');
 
             if (!preg_match('/^[a-z0-9]+$/', $username)) {
-                $error = 'Username must contain only lowercase letters and numbers, without spaces.';
+                $error = 'Username hanya boleh huruf kecil dan angka, tanpa spasi.';
             } elseif (empty($author_name)) {
-                $error = 'Author name is required.';
+                $error = 'Nama penulis harus diisi.';
             } else {
                 $existingUser = $userModel->findByUsername($username);
                 if ($existingUser && $existingUser['id'] != $id) {
-                    $error = 'Username already exists.';
+                    $error = 'Username sudah terdaftar.';
                 } else {
                     $userModel->update($id, $username, null, $author_name);
-                    $_SESSION['success_msg'] = 'User updated successfully!';
+                    $_SESSION['success_msg'] = 'User berhasil diperbarui!';
                     header('Location: /radio/' . ADMIN_SLUG . '/users');
                     exit;
                 }
@@ -141,7 +141,7 @@ class AdminController {
             if ($id && $id != 1) {
                 $userModel = new User();
                 $userModel->delete($id);
-                $_SESSION['success_msg'] = 'User deleted successfully!';
+                $_SESSION['success_msg'] = 'User berhasil dihapus!';
             }
         }
         header('Location: /radio/' . ADMIN_SLUG . '/users');
@@ -156,7 +156,7 @@ class AdminController {
             if ($id && $id != 1) {
                 $userModel = new User();
                 $userModel->resetPassword($id, '12345678');
-                $_SESSION['success_msg'] = 'Password reset to 12345678.';
+                $_SESSION['success_msg'] = 'Password berhasil direset ke 12345678.';
             }
         }
         header('Location: /radio/' . ADMIN_SLUG . '/users');
@@ -176,25 +176,25 @@ class AdminController {
             $author_name = trim($_POST['author_name'] ?? '');
 
             if (!preg_match('/^[a-z0-9]+$/', $username)) {
-                $error = 'Username must contain only lowercase letters and numbers, without spaces.';
+                $error = 'Username hanya boleh huruf kecil dan angka, tanpa spasi.';
             } elseif (empty($author_name)) {
-                $error = 'Author name is required.';
+                $error = 'Nama penulis harus diisi.';
             } else {
                 $existingUser = $userModel->findByUsername($username);
                 if ($existingUser && $existingUser['id'] != $_SESSION['user_id']) {
-                    $error = 'Username already exists.';
+                    $error = 'Username sudah terdaftar.';
                 } else {
                     $password = $password !== '' ? $password : null;
                     $userModel->update($_SESSION['user_id'], $username, $password, $author_name);
                     $_SESSION['username'] = $username;
-                    $_SESSION['success_msg'] = "Profile updated successfully!";
+                    $_SESSION['success_msg'] = "Profil berhasil diperbarui!";
                     $user = $userModel->find($_SESSION['user_id']); // Refresh data
                     $authorName = $user['author_name'] ?? $user['username'];
                 }
             }
         }
 
-        $title = 'Settings - GibelFm';
+        $title = 'Pengaturan - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/settings.php';
     }
 
@@ -209,7 +209,7 @@ class AdminController {
             if (!empty($newSlug)) {
                 $settingModel = new \App\Models\Setting();
                 $settingModel->set('admin_slug', $newSlug);
-                $_SESSION['success_msg'] = "Admin URL updated successfully! New slug: " . $newSlug;
+                $_SESSION['success_msg'] = "URL admin berhasil diperbarui! Slug baru: " . $newSlug;
                 header('Location: /radio/' . $newSlug . '/settings');
                 exit;
             }
@@ -239,11 +239,11 @@ class AdminController {
             $newsModel = new News();
             $newsModel->create($title, $excerpt, $content, $image_url, $date, $author);
             
-            $_SESSION['success_msg'] = "News created successfully!";
+            $_SESSION['success_msg'] = "Berita berhasil dibuat!";
             header('Location: /radio/' . ADMIN_SLUG . '/news');
             exit;
         }
-        $title = 'Create News - GibelFm';
+        $title = 'Tambah Berita - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/create_news.php';
     }
 
@@ -292,12 +292,12 @@ class AdminController {
 
             $newsModel->update($id, $title, $excerpt, $content, $image_url, $date, $author);
             
-            $_SESSION['success_msg'] = "News updated successfully!";
+            $_SESSION['success_msg'] = "Berita berhasil diperbarui!";
             header('Location: /radio/' . ADMIN_SLUG . '/news');
             exit;
         }
 
-        $title = 'Edit News - GibelFm';
+        $title = 'Edit Berita - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/edit_news.php';
     }
 
@@ -307,7 +307,7 @@ class AdminController {
             if ($id) {
                 $newsModel = new News();
                 $newsModel->delete($id);
-                $_SESSION['success_msg'] = "News deleted successfully!";
+                $_SESSION['success_msg'] = "Berita berhasil dihapus!";
             }
         }
         header('Location: /radio/' . ADMIN_SLUG . '/news');
@@ -317,7 +317,7 @@ class AdminController {
     public function calendar() {
         $eventModel = new Event();
         $events = $eventModel->all();
-        $title = 'Calendar Management - GibelFm';
+        $title = 'Jadwal Acara - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/calendar.php';
     }
 
@@ -331,11 +331,11 @@ class AdminController {
             $eventModel = new Event();
             $eventModel->create($title, $type, $event_date, $description);
             
-            $_SESSION['success_msg'] = "Event created successfully!";
+            $_SESSION['success_msg'] = "Acara berhasil dibuat!";
             header('Location: /radio/' . ADMIN_SLUG . '/calendar');
             exit;
         }
-        $title = 'Create Event - GibelFm';
+        $title = 'Tambah Acara - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/create_event.php';
     }
 
@@ -361,12 +361,12 @@ class AdminController {
 
             $eventModel->update($id, $title, $type, $event_date, $description);
             
-            $_SESSION['success_msg'] = "Event updated successfully!";
+            $_SESSION['success_msg'] = "Acara berhasil diperbarui!";
             header('Location: /radio/' . ADMIN_SLUG . '/calendar');
             exit;
         }
 
-        $title = 'Edit Event - GibelFm';
+        $title = 'Edit Acara - GibelFm';
         require_once __DIR__ . '/../../resources/views/admin/edit_event.php';
     }
 
@@ -376,7 +376,7 @@ class AdminController {
             if ($id) {
                 $eventModel = new Event();
                 $eventModel->delete($id);
-                $_SESSION['success_msg'] = "Event deleted successfully!";
+                $_SESSION['success_msg'] = "Acara berhasil dihapus!";
             }
         }
         header('Location: /radio/' . ADMIN_SLUG . '/calendar');
@@ -408,5 +408,71 @@ class AdminController {
             }
         }
         return null;
+    }
+
+    public function editProfile() {
+        $profileModel = new \App\Models\Profile();
+        $error = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $station_name = trim($_POST['station_name'] ?? '');
+            $tagline = trim($_POST['tagline'] ?? '');
+            $description = trim($_POST['description'] ?? '');
+            $vision = trim($_POST['vision'] ?? '');
+
+            // Parse missions: one per line
+            $missions_input = $_POST['missions'] ?? '';
+            $missions_arr = array_filter(array_map('trim', explode("\n", $missions_input)));
+            $missions_arr = array_values($missions_arr); // re-index
+
+            // Parse crew: array of crew members
+            $crew_names = $_POST['crew_name'] ?? [];
+            $crew_roles = $_POST['crew_role'] ?? [];
+            $crew_avatars = $_POST['crew_avatar'] ?? [];
+            $crew_fb = $_POST['crew_fb'] ?? [];
+            $crew_ig = $_POST['crew_ig'] ?? [];
+            $crew_tt = $_POST['crew_tt'] ?? [];
+
+            $crew_arr = [];
+            for ($i = 0; $i < count($crew_names); $i++) {
+                if (empty(trim($crew_names[$i]))) continue;
+                $crew_arr[] = [
+                    'name' => trim($crew_names[$i]),
+                    'role' => trim($crew_roles[$i] ?? ''),
+                    'avatar' => trim($crew_avatars[$i] ?? ''),
+                    'social' => [
+                        'facebook' => trim($crew_fb[$i] ?? ''),
+                        'instagram' => trim($crew_ig[$i] ?? ''),
+                        'tiktok' => trim($crew_tt[$i] ?? '')
+                    ]
+                ];
+            }
+
+            // Save to database
+            $missions_json = json_encode($missions_arr, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            $crew_json = json_encode($crew_arr, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            $profileModel->updateProfile($station_name, $tagline, $description, $vision, $missions_json, $crew_json);
+
+            $_SESSION['success_msg'] = 'Profil stasiun radio berhasil diperbarui!';
+            header('Location: /radio/' . ADMIN_SLUG . '/profile');
+            exit;
+        }
+
+        // Load existing values
+        $profile = $profileModel->getProfile();
+        $station_name = $profile['station_name'];
+        $tagline = $profile['tagline'];
+        $description = $profile['description'];
+        $vision = $profile['vision'];
+        
+        $missions = json_decode($profile['missions'], true);
+        $crew = json_decode($profile['crew'], true);
+
+        // Convert missions back to newline-separated text for the textarea
+        $missions_text = implode("\n", $missions);
+
+        $title = 'Edit Profil Stasiun - GibelFm';
+        $activeSection = 'profile';
+        require_once __DIR__ . '/../../resources/views/admin/edit_profile.php';
     }
 }

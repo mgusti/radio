@@ -56,11 +56,13 @@
           <nav class="hidden lg:flex gap-8 font-medium">
             <?php $isNewsPage = strpos($_SERVER['REQUEST_URI'], 'news') !== false; ?>
             <?php $isCalendarPage = strpos($_SERVER['REQUEST_URI'], 'calendar') !== false; ?>
-            <a href="<?= rtrim($baseUrl, '/') ?>/" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Home</a>
-            <a href="<?= rtrim($baseUrl, '/') ?>/news" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">News</a>
-            <a href="<?= rtrim($baseUrl, '/') ?>/calendar" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Calendar</a>
-            <?php if (!$isNewsPage && !$isCalendarPage): ?>
-            <a href="#contact" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Contact us</a>
+            <?php $isProfilePage = strpos($_SERVER['REQUEST_URI'], 'profile') !== false; ?>
+            <a href="<?= rtrim($baseUrl, '/') ?>/" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Beranda</a>
+            <a href="<?= rtrim($baseUrl, '/') ?>/profile" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Profil</a>
+            <a href="<?= rtrim($baseUrl, '/') ?>/news" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Berita</a>
+            <a href="<?= rtrim($baseUrl, '/') ?>/calendar" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Kalender</a>
+            <?php if (!$isNewsPage && !$isCalendarPage && !$isProfilePage): ?>
+            <a href="#contact" class="hover:text-gray-500 dark:hover:text-gray-400 transition-colors">Kontak</a>
             <?php endif; ?>
           </nav>
           
@@ -99,13 +101,14 @@
           </button>
         </div>
         <nav class="flex flex-col gap-6 text-2xl font-bold">
-          <a href="<?= rtrim($baseUrl, '/') ?>/" class="mobile-nav-link">Home</a>
-          <a href="<?= rtrim($baseUrl, '/') ?>/news" class="mobile-nav-link">News</a>
-          <a href="<?= rtrim($baseUrl, '/') ?>/calendar" class="mobile-nav-link">Calendar</a>
-          <a href="<?= rtrim($baseUrl, '/') ?>/#contact" class="mobile-nav-link">Contact us</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/" class="mobile-nav-link">Beranda</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/profile" class="mobile-nav-link">Profil</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/news" class="mobile-nav-link">Berita</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/calendar" class="mobile-nav-link">Kalender</a>
+          <a href="<?= rtrim($baseUrl, '/') ?>/#contact" class="mobile-nav-link">Kontak</a>
         </nav>
         <div class="mt-12 pt-12 border-t border-gray-100 dark:border-white/10">
-          <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Follow Us</p>
+          <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-4">Ikuti Kami</p>
           <div class="flex gap-4">
             <a href="https://www.facebook.com/gibelfm/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
               <i class="fab fa-facebook-f"></i>

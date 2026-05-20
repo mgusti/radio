@@ -1,9 +1,9 @@
 <article class="max-w-4xl mx-auto p-4 py-16" data-aos="fade-up" data-aos-duration="1000">
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
-        <a href="/radio/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
+        <a href="/radio/" class="hover:text-black dark:hover:text-white transition-colors">Beranda</a>
         <i class="bi bi-chevron-right text-[10px]"></i>
-        <a href="/radio/news" class="hover:text-black dark:hover:text-white transition-colors">News</a>
+        <a href="/radio/news" class="hover:text-black dark:hover:text-white transition-colors">Berita</a>
         <i class="bi bi-chevron-right text-[10px]"></i>
         <span class="text-black dark:text-white font-medium truncate"><?= htmlspecialchars($news['title']) ?></span>
     </nav>
@@ -27,7 +27,7 @@
                 <?= strtoupper(substr($news['author'] ?? 'A', 0, 1)) ?>
             </div>
             <div>
-                <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Published by</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Diterbitkan oleh</p>
                 <p class="text-black dark:text-white font-bold transition-colors"><?= htmlspecialchars($news['author'] ?? 'Admin') ?></p>
             </div>
         </div>
@@ -41,7 +41,7 @@
         <?php else: ?>
             <div class="flex flex-col items-center justify-center text-gray-200 dark:text-gray-800">
                 <i class="bi bi-image text-9xl"></i>
-                <span class="text-xl font-black uppercase tracking-[0.3em] mt-4">No Image Available</span>
+                <span class="text-xl font-black uppercase tracking-[0.3em] mt-4">Gambar Tidak Tersedia</span>
             </div>
         <?php endif; ?>
     </div>
@@ -61,7 +61,7 @@
     <footer class="mt-16 pt-8 border-t border-gray-200 dark:border-white/10 transition-colors">
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-4">
-                <span class="font-bold text-gray-900 dark:text-white">Share this story:</span>
+                <span class="font-bold text-gray-900 dark:text-white">Bagikan berita ini:</span>
                 <div class="flex gap-2">
                     <a href="https://www.facebook.com/gibelfm/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all">
                         <i class="fab fa-facebook-f"></i>
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <a href="/radio/news" class="bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all transform hover:-translate-x-2 flex items-center gap-2 shadow-lg">
-                <i class="bi bi-arrow-left"></i> Back to News
+                <i class="bi bi-arrow-left"></i> Kembali ke Berita
             </a>
         </div>
     </footer>

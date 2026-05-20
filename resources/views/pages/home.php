@@ -25,7 +25,7 @@
           style="background-image:url(/radio/public/img/gibelfm.jpeg)">
           <div class="mt-auto flex justify-end w-full">
             <a href="#contact" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-1.5 md:p-2 text-base md:text-xl rounded-full w-[75%] md:w-1/2 flex gap-2 md:gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
-              <span class="pl-2 font-medium">Request Song</span>
+              <span class="pl-2 font-medium">Request Lagu</span>
               <i class="flex items-center justify-center bi bi-music-note bg-black dark:bg-white text-white dark:text-black rounded-full p-1 w-[32px] h-[32px] md:w-[40px] md:h-[40px] text-center text-sm md:text-base"></i>
             </a>
           </div>
@@ -37,7 +37,7 @@
                 <div class="flex justify-between items-center">
                     <div class="flex gap-2 items-center text-xs font-bold bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20" id="stream-status">
                         <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)] animate-pulse"></span>
-                        <span class="uppercase tracking-widest">Live Now</span>
+                        <span class="uppercase tracking-widest">Siaran Langsung</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <i class="bi bi-broadcast text-red-500 animate-pulse"></i>
@@ -51,7 +51,7 @@
                             <i class="bi bi-vinyl-fill text-5xl text-white/80 animate-[spin_4s_linear_infinite]"></i>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Muaro Jambi Local Radio</span>
+                            <span class="text-blue-400 text-xs font-bold uppercase tracking-widest mb-1">Radio Lokal Muaro Jambi</span>
                             <h3 class="font-bold text-4xl lg:text-5xl tracking-tight leading-none mb-2">Gibel Fm</h3>
                             <p class="text-lg text-gray-400 font-medium italic opacity-80">"The Spirit of Muaro Jambi"</p>
                         </div>
@@ -73,7 +73,7 @@
                     
                     <div class="flex-1 flex flex-col gap-2">
                         <div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest opacity-50">
-                            <span>Volume Control</span>
+                            <span>Kontrol Volume</span>
                             <span id="volume-percent"></span>
                         </div>
                         <div class="flex items-center gap-4">
@@ -86,7 +86,7 @@
                 
                 <audio id="radio-audio" preload="none" crossorigin="anonymous">
                     <source src="<?= htmlspecialchars($streamUrl ?? 'https://pu.klikhost.com/proxy/radiogib/stream') ?>" type="audio/mpeg">
-                    Your browser does not support the audio element.
+                    Browser Anda tidak mendukung elemen audio.
                 </audio>
             </div>
             
@@ -243,11 +243,11 @@
       <div class="flex flex-col gap-8">
         <div class="flex justify-between items-end">
           <div>
-            <h2 class="text-3xl lg:text-5xl font-semibold text-gray-900 dark:text-white">Latest News</h2>
-            <p class="text-gray-500 dark:text-gray-400 mt-2 text-lg">Stay updated with the radio community.</p>
+            <h2 class="text-3xl lg:text-5xl font-semibold text-gray-900 dark:text-white">Berita Terbaru</h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-2 text-lg">Dapatkan info terkini dari komunitas radio.</p>
           </div>
           <a href="/radio/news" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1 text-lg">
-            View All <i class="bi bi-arrow-right"></i>
+            Lihat Semua <i class="bi bi-arrow-right"></i>
           </a>
         </div>
 
@@ -269,14 +269,14 @@
                       <i class="bi bi-person-circle mr-1"></i> <?= htmlspecialchars($news['author'] ?? 'Admin') ?>
                     </p>
                     <a href="/radio/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
-                      Read More <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
+                      Selengkapnya <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
                     </a>
                   </div>
                 </div>
               </article>
             <?php endforeach; ?>
           <?php else: ?>
-            <p class="col-span-full text-center text-gray-500 py-10">No news articles yet.</p>
+            <p class="col-span-full text-center text-gray-500 py-10">Belum ada artikel berita.</p>
           <?php endif; ?>
         </div>
       </div>
@@ -293,7 +293,7 @@
                 src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
                 alt="ContactUs tailwind section" class="w-full h-full object-cover bg-blend-multiply" />
               <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-              <h1 class="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11 drop-shadow-md z-10">Contact us</h1>
+              <h1 class="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11 drop-shadow-md z-10">Hubungi Kami</h1>
               <div class="absolute bottom-0 w-full lg:p-11 p-5 z-10">
                 <div class="bg-white dark:bg-[#121212] rounded-lg p-6 shadow-lg border border-gray-100 dark:border-white/10">
                   <a href="#" class="flex items-center mb-6 hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
@@ -317,21 +317,21 @@
         </div>
 
         <div class="p-8 lg:p-14 bg-gray-50 dark:bg-[#0f0f0f] border-l border-gray-100 dark:border-white/5 flex flex-col justify-center transition-colors">
-          <h2 class="font-manrope text-4xl font-semibold leading-10 mb-10 text-gray-900 dark:text-white">Send Us A Message</h2>
+          <h2 class="font-manrope text-4xl font-semibold leading-10 mb-10 text-gray-900 dark:text-white">Kirimkan Pesan</h2>
           <input type="text"
             class="w-full h-12 text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-6 rounded-lg transition"
-            placeholder="Name">
+            placeholder="Nama">
           <input type="email"
             class="w-full h-12 text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-6 rounded-lg transition"
             placeholder="Email">
           <input type="text"
             class="w-full h-12 text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-6 rounded-lg transition"
-            placeholder="Subject">
+            placeholder="Subjek">
           <textarea
             class="min-h-[160px] w-full text-gray-800 dark:text-white placeholder-gray-400 bg-white dark:bg-white/5 shadow-sm text-lg font-normal leading-7 border border-gray-200 dark:border-white/10 focus:border-black dark:focus:border-white focus:outline-none p-4 mb-8 rounded-lg resize-y transition"
-            placeholder="Message"></textarea>
+            placeholder="Pesan"></textarea>
           <button
-            class="w-full h-14 text-white dark:text-black text-lg font-semibold leading-6 rounded-full transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 bg-black dark:bg-white shadow-md hover:shadow-xl">Send Message</button>
+            class="w-full h-14 text-white dark:text-black text-lg font-semibold leading-6 rounded-full transition-all duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 bg-black dark:bg-white shadow-md hover:shadow-xl">Kirim Pesan</button>
         </div>
       </div>
     </div>
