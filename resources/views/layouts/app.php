@@ -44,7 +44,7 @@
       <div class="flex justify-between gap-8 items-center">
         <div>
           <a href="<?= rtrim($baseUrl, '/') ?>/" class="font-bold text-3xl md:text-4xl">
-            <span class="border-b-4 border-black dark:border-white transition-colors">Gibel</span>Fm
+            <span class="border-b-4 border-black dark:border-white transition-colors">99,7</span> GIBEL FM
           </a>
         </div>
         
@@ -91,7 +91,7 @@
       <div class="p-6">
         <div class="flex justify-between items-center mb-12">
           <a href="<?= rtrim($baseUrl, '/') ?>/" class="font-bold text-3xl">
-            <span class="border-b-4 border-black dark:border-white">Gibel</span>Fm
+            <span class="border-b-4 border-black dark:border-white">99,7</span> GIBEL FM
           </a>
           <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/5">
             <i class="bi bi-x-lg text-xl"></i>
