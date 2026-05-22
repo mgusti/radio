@@ -8,7 +8,7 @@ class AuthController {
     public function loginForm() {
         // If already logged in, redirect to admin dashboard
         if (isset($_SESSION['user_id'])) {
-            header('Location: /radio/' . ADMIN_SLUG);
+            header('Location: /' . ADMIN_SLUG);
             exit;
         }
         $title = 'Login Admin - GibelFm';
@@ -27,7 +27,7 @@ class AuthController {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['is_super_admin'] = $user['id'] === 1;
-                header('Location: /radio/' . ADMIN_SLUG);
+                header('Location: /' . ADMIN_SLUG);
                 exit;
             } else {
                 $error = 'Username atau password salah';
@@ -39,7 +39,7 @@ class AuthController {
 
     public function logout() {
         session_destroy();
-        header('Location: /radio/' . ADMIN_SLUG . '/login');
+        header('Location: /' . ADMIN_SLUG . '/login');
         exit;
     }
 }

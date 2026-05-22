@@ -9,7 +9,7 @@ use App\Models\User;
 class AdminController {
     public function __construct() {
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /radio/' . ADMIN_SLUG . '/login');
+            header('Location: /' . ADMIN_SLUG . '/login');
             exit;
         }
 
@@ -37,7 +37,7 @@ class AdminController {
 
     private function requireSuperAdmin() {
         if (!$this->isSuperAdmin()) {
-            header('Location: /radio/' . ADMIN_SLUG);
+            header('Location: /' . ADMIN_SLUG);
             exit;
         }
     }
@@ -82,7 +82,7 @@ class AdminController {
             } else {
                 $userModel->create($username, $password, $author_name);
                 $_SESSION['success_msg'] = 'User berhasil ditambahkan!';
-                header('Location: /radio/' . ADMIN_SLUG . '/users');
+                header('Location: /' . ADMIN_SLUG . '/users');
                 exit;
             }
         }
@@ -96,14 +96,14 @@ class AdminController {
 
         $id = $_GET['id'] ?? null;
         if (!$id || $id == 1) {
-            header('Location: /radio/' . ADMIN_SLUG . '/users');
+            header('Location: /' . ADMIN_SLUG . '/users');
             exit;
         }
 
         $userModel = new User();
         $user = $userModel->find($id);
         if (!$user) {
-            header('Location: /radio/' . ADMIN_SLUG . '/users');
+            header('Location: /' . ADMIN_SLUG . '/users');
             exit;
         }
 
@@ -123,7 +123,7 @@ class AdminController {
                 } else {
                     $userModel->update($id, $username, null, $author_name);
                     $_SESSION['success_msg'] = 'User berhasil diperbarui!';
-                    header('Location: /radio/' . ADMIN_SLUG . '/users');
+                    header('Location: /' . ADMIN_SLUG . '/users');
                     exit;
                 }
             }
@@ -144,7 +144,7 @@ class AdminController {
                 $_SESSION['success_msg'] = 'User berhasil dihapus!';
             }
         }
-        header('Location: /radio/' . ADMIN_SLUG . '/users');
+        header('Location: /' . ADMIN_SLUG . '/users');
         exit;
     }
 
@@ -159,7 +159,7 @@ class AdminController {
                 $_SESSION['success_msg'] = 'Password berhasil direset ke 12345678.';
             }
         }
-        header('Location: /radio/' . ADMIN_SLUG . '/users');
+        header('Location: /' . ADMIN_SLUG . '/users');
         exit;
     }
 
@@ -210,11 +210,11 @@ class AdminController {
                 $settingModel = new \App\Models\Setting();
                 $settingModel->set('admin_slug', $newSlug);
                 $_SESSION['success_msg'] = "URL admin berhasil diperbarui! Slug baru: " . $newSlug;
-                header('Location: /radio/' . $newSlug . '/settings');
+                header('Location: /' . $newSlug . '/settings');
                 exit;
             }
         }
-        header('Location: /radio/' . ADMIN_SLUG . '/settings');
+        header('Location: /' . ADMIN_SLUG . '/settings');
         exit;
     }
 
@@ -240,7 +240,7 @@ class AdminController {
             $newsModel->create($title, $excerpt, $content, $image_url, $date, $author);
             
             $_SESSION['success_msg'] = "Berita berhasil dibuat!";
-            header('Location: /radio/' . ADMIN_SLUG . '/news');
+            header('Location: /' . ADMIN_SLUG . '/news');
             exit;
         }
         $title = 'Tambah Berita - GibelFm';
@@ -250,14 +250,14 @@ class AdminController {
     public function editNews() {
         $id = $_GET['id'] ?? null;
         if (!$id) {
-            header('Location: /radio/' . ADMIN_SLUG . '/news');
+            header('Location: /' . ADMIN_SLUG . '/news');
             exit;
         }
 
         $newsModel = new News();
         $news = $newsModel->find($id); // Get current data to check for changes
         if (!$news) {
-            header('Location: /radio/' . ADMIN_SLUG . '/news');
+            header('Location: /' . ADMIN_SLUG . '/news');
             exit;
         }
 
@@ -293,7 +293,7 @@ class AdminController {
             $newsModel->update($id, $title, $excerpt, $content, $image_url, $date, $author);
             
             $_SESSION['success_msg'] = "Berita berhasil diperbarui!";
-            header('Location: /radio/' . ADMIN_SLUG . '/news');
+            header('Location: /' . ADMIN_SLUG . '/news');
             exit;
         }
 
@@ -310,7 +310,7 @@ class AdminController {
                 $_SESSION['success_msg'] = "Berita berhasil dihapus!";
             }
         }
-        header('Location: /radio/' . ADMIN_SLUG . '/news');
+        header('Location: /' . ADMIN_SLUG . '/news');
         exit;
     }
 
@@ -332,7 +332,7 @@ class AdminController {
             $eventModel->create($title, $type, $event_date, $description);
             
             $_SESSION['success_msg'] = "Acara berhasil dibuat!";
-            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            header('Location: /' . ADMIN_SLUG . '/calendar');
             exit;
         }
         $title = 'Tambah Acara - GibelFm';
@@ -342,14 +342,14 @@ class AdminController {
     public function editEvent() {
         $id = $_GET['id'] ?? null;
         if (!$id) {
-            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            header('Location: /' . ADMIN_SLUG . '/calendar');
             exit;
         }
 
         $eventModel = new Event();
         $event = $eventModel->find($id);
         if (!$event) {
-            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            header('Location: /' . ADMIN_SLUG . '/calendar');
             exit;
         }
 
@@ -362,7 +362,7 @@ class AdminController {
             $eventModel->update($id, $title, $type, $event_date, $description);
             
             $_SESSION['success_msg'] = "Acara berhasil diperbarui!";
-            header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+            header('Location: /' . ADMIN_SLUG . '/calendar');
             exit;
         }
 
@@ -379,7 +379,7 @@ class AdminController {
                 $_SESSION['success_msg'] = "Acara berhasil dihapus!";
             }
         }
-        header('Location: /radio/' . ADMIN_SLUG . '/calendar');
+        header('Location: /' . ADMIN_SLUG . '/calendar');
         exit;
     }
 
@@ -404,7 +404,7 @@ class AdminController {
             }
 
             if (move_uploaded_file($file['tmp_name'], $uploadDir . $filename)) {
-                return '/radio/public/img/' . $filename;
+                return '/public/img/' . $filename;
             }
         }
         return null;
@@ -454,7 +454,7 @@ class AdminController {
             $profileModel->updateProfile($station_name, $tagline, $description, $vision, $missions_json, $crew_json);
 
             $_SESSION['success_msg'] = 'Profil stasiun radio berhasil diperbarui!';
-            header('Location: /radio/' . ADMIN_SLUG . '/profile');
+            header('Location: /' . ADMIN_SLUG . '/profile');
             exit;
         }
 

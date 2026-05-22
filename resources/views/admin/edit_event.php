@@ -5,7 +5,7 @@ require_once __DIR__ . '/layout_header.php';
 
 <div class="max-w-2xl">
     <div class="mb-8">
-        <a href="/radio/<?= ADMIN_SLUG ?>/calendar" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors mb-4">
+        <a href="/<?= ADMIN_SLUG ?>/calendar" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors mb-4">
             <i class="bi bi-arrow-left"></i> Kembali
         </a>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Edit Acara</h2>
@@ -13,7 +13,7 @@ require_once __DIR__ . '/layout_header.php';
     </div>
 
     <div class="bg-white dark:bg-[#121212] rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 p-8">
-        <form action="/radio/<?= ADMIN_SLUG ?>/calendar/edit?id=<?= $event['id'] ?>" method="POST" class="space-y-6">
+        <form action="/<?= ADMIN_SLUG ?>/calendar/edit?id=<?= $event['id'] ?>" method="POST" class="space-y-6">
             <div>
                 <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Nama Acara <span class="text-red-500">*</span></label>
                 <input type="text" name="title" required value="<?= htmlspecialchars($event['title']) ?>"
@@ -46,7 +46,7 @@ require_once __DIR__ . '/layout_header.php';
                 <button type="submit" class="bg-black dark:bg-white dark:text-black text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-sm flex items-center gap-2">
                     <i class="bi bi-check-lg"></i> Simpan Perubahan
                 </button>
-                <a href="/radio/<?= ADMIN_SLUG ?>/calendar" class="px-8 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                <a href="/<?= ADMIN_SLUG ?>/calendar" class="px-8 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                     Batal
                 </a>
             </div>

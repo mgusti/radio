@@ -23,7 +23,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="/radio/<?= ADMIN_SLUG ?>/login" method="POST" class="flex flex-col gap-5">
+        <form action="/<?= ADMIN_SLUG ?>/login" method="POST" class="flex flex-col gap-5">
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
                 <input type="text" name="username" required 

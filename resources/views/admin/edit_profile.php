@@ -17,7 +17,7 @@ require_once __DIR__ . '/layout_header.php';
         <?php unset($_SESSION['success_msg']); ?>
     <?php endif; ?>
 
-    <form action="/radio/<?= ADMIN_SLUG ?>/profile" method="POST" class="flex flex-col gap-8">
+    <form action="/<?= ADMIN_SLUG ?>/profile" method="POST" class="flex flex-col gap-8">
         
         <!-- General Information Card -->
         <div class="bg-white dark:bg-[#121212] rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 p-8 flex flex-col gap-6">
@@ -140,7 +140,7 @@ require_once __DIR__ . '/layout_header.php';
             <button type="submit" class="bg-black dark:bg-white dark:text-black text-white px-8 py-4 rounded-xl font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-lg flex items-center gap-2">
                 <i class="bi bi-cloud-arrow-up"></i> Simpan Perubahan
             </button>
-            <a href="/radio/<?= ADMIN_SLUG ?>" class="px-8 py-4 rounded-xl font-bold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <a href="/<?= ADMIN_SLUG ?>" class="px-8 py-4 rounded-xl font-bold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                 Batal
             </a>
         </div>

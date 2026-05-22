@@ -9,7 +9,7 @@ require_once __DIR__ . '/layout_header.php';
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Kelola User</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Super admin dapat membuat, mengubah, menghapus, dan mereset password user biasa.</p>
         </div>
-        <a href="/radio/<?= ADMIN_SLUG ?>/users/create" class="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-4 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
+        <a href="/<?= ADMIN_SLUG ?>/users/create" class="inline-flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-4 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors">
             <i class="bi bi-plus-lg"></i> Tambah User
         </a>
     </div>
@@ -47,16 +47,16 @@ require_once __DIR__ . '/layout_header.php';
                             <td class="py-4 px-6 text-sm text-gray-500"><?= date('d M Y', strtotime($user['created_at'] ?? 'now')) ?></td>
                             <td class="py-4 px-6 text-right">
                                 <div class="flex flex-wrap justify-end gap-2">
-                                    <a href="/radio/<?= ADMIN_SLUG ?>/users/edit?id=<?= $user['id'] ?>" class="text-blue-500 hover:text-blue-700 bg-blue-50 dark:bg-blue-500/10 p-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors">
+                                    <a href="/<?= ADMIN_SLUG ?>/users/edit?id=<?= $user['id'] ?>" class="text-blue-500 hover:text-blue-700 bg-blue-50 dark:bg-blue-500/10 p-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <form action="/radio/<?= ADMIN_SLUG ?>/users/reset-password" method="POST" class="inline">
+                                    <form action="/<?= ADMIN_SLUG ?>/users/reset-password" method="POST" class="inline">
                                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                         <button type="submit" class="text-amber-500 hover:text-amber-700 bg-amber-50 dark:bg-amber-500/10 p-2 rounded-lg hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors">
                                             <i class="bi bi-key"></i>
                                         </button>
                                     </form>
-                                    <form action="/radio/<?= ADMIN_SLUG ?>/users/delete" method="POST" onsubmit="return confirm('Yakin mau hapus user ini?');" class="inline">
+                                    <form action="/<?= ADMIN_SLUG ?>/users/delete" method="POST" onsubmit="return confirm('Yakin mau hapus user ini?');" class="inline">
                                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                         <button type="submit" class="text-red-500 hover:text-red-700 bg-red-50 dark:bg-red-500/10 p-2 rounded-lg hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
                                             <i class="bi bi-trash"></i>

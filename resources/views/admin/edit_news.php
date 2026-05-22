@@ -5,14 +5,14 @@ require_once __DIR__ . '/layout_header.php';
 
 <div class="max-w-3xl">
     <div class="mb-8">
-        <a href="/radio/<?= ADMIN_SLUG ?>/news" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors mb-4">
+        <a href="/<?= ADMIN_SLUG ?>/news" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors mb-4">
             <i class="bi bi-arrow-left"></i> Kembali
         </a>
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Edit Berita</h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Ubah isi artikel berita ini.</p>
     </div>
 
-    <form action="/radio/<?= ADMIN_SLUG ?>/news/edit?id=<?= $news['id'] ?>" method="POST" enctype="multipart/form-data"
+    <form action="/<?= ADMIN_SLUG ?>/news/edit?id=<?= $news['id'] ?>" method="POST" enctype="multipart/form-data"
           class="bg-white dark:bg-[#121212] rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 p-8 flex flex-col gap-6">
 
         <div>
@@ -84,7 +84,7 @@ require_once __DIR__ . '/layout_header.php';
             <button type="submit" class="bg-black dark:bg-white dark:text-black text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-sm flex items-center gap-2">
                 <i class="bi bi-check-lg"></i> Simpan Perubahan
             </button>
-            <a href="/radio/<?= ADMIN_SLUG ?>/news" class="px-8 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+            <a href="/<?= ADMIN_SLUG ?>/news" class="px-8 py-3 rounded-xl font-semibold border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                 Batal
             </a>
         </div>

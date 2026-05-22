@@ -31,7 +31,7 @@
                                 <p class="text-sm text-gray-500 dark:text-gray-400">
                                     <i class="bi bi-person-circle mr-1"></i> <?= htmlspecialchars($news['author'] ?? 'Admin') ?>
                                 </p>
-                                <a href="/radio/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/link">
+                                <a href="/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/link">
                                     Selengkapnya <i class="bi bi-arrow-right transform group-hover/link:translate-x-1 transition-transform"></i>
                                 </a>
                             </div>

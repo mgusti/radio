@@ -33,7 +33,7 @@ require_once __DIR__ . '/layout_header.php';
                 </div>
                 <?= ($_SESSION['is_super_admin'] ?? false) ? 'Profil Admin' : 'Profil User' ?>
             </h3>
-            <form action="/radio/<?= ADMIN_SLUG ?>/settings" method="POST" class="flex flex-col gap-5">
+            <form action="/<?= ADMIN_SLUG ?>/settings" method="POST" class="flex flex-col gap-5">
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Username</label>
                     <input type="text" name="username" required value="<?= htmlspecialchars($user['username']) ?>"
@@ -68,14 +68,14 @@ require_once __DIR__ . '/layout_header.php';
                     URL Keamanan
                 </h3>
                 <p class="text-gray-500 dark:text-gray-400 text-sm mb-6">
-                    Ubah URL halaman admin. Saat ini: <code class="bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded text-gray-900 dark:text-white font-mono text-xs">/radio/<?= ADMIN_SLUG ?></code>
+                    Ubah URL halaman admin. Saat ini: <code class="bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded text-gray-900 dark:text-white font-mono text-xs">/<?= ADMIN_SLUG ?></code>
                 </p>
-                <form action="/radio/<?= ADMIN_SLUG ?>/settings/slug" method="POST" class="flex flex-col gap-5"
+                <form action="/<?= ADMIN_SLUG ?>/settings/slug" method="POST" class="flex flex-col gap-5"
                       onsubmit="return confirm('Peringatan: Mengubah URL admin akan mengalihkan Anda. Jangan lupa alamat barunya!');">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Slug URL Admin</label>
                         <div class="flex items-center bg-gray-100 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 overflow-hidden focus-within:ring-2 focus-within:ring-red-500 transition-all">
-                            <span class="px-4 text-gray-400 font-medium text-sm">/radio/</span>
+                            <span class="px-4 text-gray-400 font-medium text-sm">/</span>
                             <input type="text" name="admin_slug" required value="<?= htmlspecialchars(ADMIN_SLUG) ?>"
                                    class="flex-1 px-2 py-3 bg-transparent border-none focus:outline-none text-gray-900 dark:text-white font-bold">
                         </div>

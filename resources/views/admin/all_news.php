@@ -16,7 +16,7 @@ require_once __DIR__ . '/layout_header.php';
 <div class="bg-white dark:bg-[#121212] rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden">
     <div class="px-6 py-4 border-b border-gray-100 dark:border-white/5 flex justify-between items-center">
         <h2 class="text-base font-bold text-gray-900 dark:text-white">Daftar Berita</h2>
-        <a href="/radio/<?= ADMIN_SLUG ?>/news/create" class="bg-black dark:bg-white dark:text-black text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors flex items-center gap-2">
+        <a href="/<?= ADMIN_SLUG ?>/news/create" class="bg-black dark:bg-white dark:text-black text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors flex items-center gap-2">
             <i class="bi bi-plus-lg"></i> Tambah
         </a>
     </div>
@@ -50,10 +50,10 @@ require_once __DIR__ . '/layout_header.php';
                         <td class="py-4 px-6 text-sm text-gray-500"><?= date('d M Y', strtotime($item['date'] ?? $item['created_at'])) ?></td>
                         <td class="py-4 px-6 text-right">
                             <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <a href="/radio/<?= ADMIN_SLUG ?>/news/edit?id=<?= $item['id'] ?>" class="text-blue-500 hover:text-blue-700 bg-blue-50 dark:bg-blue-500/10 p-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors">
+                                <a href="/<?= ADMIN_SLUG ?>/news/edit?id=<?= $item['id'] ?>" class="text-blue-500 hover:text-blue-700 bg-blue-50 dark:bg-blue-500/10 p-2 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form action="/radio/<?= ADMIN_SLUG ?>/news/delete" method="POST" onsubmit="return confirm('Yakin mau hapus berita ini?');" class="inline">
+                                <form action="/<?= ADMIN_SLUG ?>/news/delete" method="POST" onsubmit="return confirm('Yakin mau hapus berita ini?');" class="inline">
                                     <input type="hidden" name="id" value="<?= $item['id'] ?>">
                                     <button type="submit" class="text-red-500 hover:text-red-700 bg-red-50 dark:bg-red-500/10 p-2 rounded-lg hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
                                         <i class="bi bi-trash"></i>

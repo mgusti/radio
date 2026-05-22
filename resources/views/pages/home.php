@@ -1,7 +1,7 @@
 <section class="p-4 py-5" data-aos="fade-down" data-aos-duration="1000">
     <div class="w-full max-w-7xl mx-auto">
       <div class="flex flex-col gap-10 items-center">
-        <img src="/radio/public/img/banner.jpeg" alt="Banner" class="w-full max-w-7xl mx-auto rounded-lg shadow-lg max-h-[460px] object-cover">
+        <img src="/img/banner.jpeg" alt="Banner" class="w-full max-w-7xl mx-auto rounded-lg shadow-lg max-h-[460px] object-cover">
         <h1 class="text-2xl lg:text-5xl text-center text-gray-900 dark:text-white">
           Radio Gibel_FM
           <span class="block text-gray-400 dark:text-gray-500 pt-4">The Spirit of Muaro Jambi</span>
@@ -22,7 +22,7 @@
       <div class="flex flex-col lg:flex-row gap-4">
         <div
           class="flex w-full rounded-xl p-8 min-h-[300px] md:min-h-[350px] lg:min-h-[400px] bg-cover bg-center border"
-          style="background-image:url(/radio/public/img/gibelfm.jpeg)">
+          style="background-image:url(/img/gibelfm.jpeg)">
           <div class="mt-auto flex justify-end w-full">
             <a href="#contact" class="bg-white dark:bg-[#121212] hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black p-1.5 md:p-2 text-base md:text-xl rounded-full w-[75%] md:w-1/2 flex gap-2 md:gap-4 justify-between items-center transition-colors border border-gray-100 dark:border-white/10">
               <span class="pl-2 font-medium">Request Lagu</span>
@@ -246,7 +246,7 @@
             <h2 class="text-3xl lg:text-5xl font-semibold text-gray-900 dark:text-white">Berita Terbaru</h2>
             <p class="text-gray-500 dark:text-gray-400 mt-2 text-lg">Dapatkan info terkini dari komunitas radio.</p>
           </div>
-          <a href="/radio/news" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1 text-lg">
+          <a href="/news" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline flex items-center gap-1 text-lg">
             Lihat Semua <i class="bi bi-arrow-right"></i>
           </a>
         </div>
@@ -268,7 +268,7 @@
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                       <i class="bi bi-person-circle mr-1"></i> <?= htmlspecialchars($news['author'] ?? 'Admin') ?>
                     </p>
-                    <a href="/radio/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
+                    <a href="/news/view?id=<?= $news['id'] ?>" class="text-black dark:text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 group/btn">
                       Selengkapnya <i class="bi bi-arrow-right transition-transform group-hover/btn:translate-x-1"></i>
                     </a>
                   </div>
@@ -298,17 +298,15 @@
                 <div class="bg-white dark:bg-[#121212] rounded-lg p-6 shadow-lg border border-gray-100 dark:border-white/10">
                   <a href="#" class="flex items-center mb-6 hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
                     <i class="bi bi-telephone text-xl dark:text-white"></i>
-                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">123-123-123</h5>
+                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">081373562001</h5>
                   </a>
                   <a href="mailto:studio@gibelfm.com" class="flex items-center mb-6 hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
                     <i class="bi bi-envelope text-xl dark:text-white"></i>
-                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">studio@gibelfm.com</h5>
+                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">radiogibelfm@gmail.com</h5>
                   </a>
                   <a href="#" class="flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition group/link">
                     <i class="bi bi-geo-alt text-xl dark:text-white"></i>
-                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">424 Broadcast Ave,
-                      Media City, WA
-                      76543</h5>
+                    <h5 class="underline text-black dark:text-white text-base font-medium leading-6 ml-5 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400">Jl. Lintas Timur Jambi Lrg Pemancar, RT 14 Sengeti, Kabupaten Muaro Jambi 36381</h5>
                   </a>
                 </div>
               </div>

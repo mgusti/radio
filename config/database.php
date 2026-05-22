@@ -9,9 +9,9 @@ class Database {
     private static $instance = null;
     private $pdo;
 
-    private $host = '127.0.0.1';
+    private $host = 'localhost';
     private $user = 'root';
-    private $pass = 'Rsudham01';
+    private $pass = '';
     private $dbname = 'radio_db';
 
     private function __construct() {

@@ -35,7 +35,7 @@
     <aside class="w-64 bg-white dark:bg-[#121212] border-r border-gray-100 dark:border-white/5 flex flex-col flex-shrink-0 h-screen sticky top-0">
         <!-- Logo -->
         <div class="p-6 border-b border-gray-100 dark:border-white/5">
-            <a href="/radio/<?= ADMIN_SLUG ?>" class="flex items-center gap-3">
+            <a href="/<?= ADMIN_SLUG ?>" class="flex items-center gap-3">
                 <div class="w-9 h-9 bg-black dark:bg-white rounded-xl flex items-center justify-center flex-shrink-0">
                     <div class="w-3.5 h-3.5 bg-white dark:bg-black rounded-full"></div>
                 </div>
@@ -49,37 +49,37 @@
         <!-- Navigation -->
         <nav class="flex-1 p-4 space-y-1">
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-2 pb-1">Menu</p>
-            <a href="/radio/<?= ADMIN_SLUG ?>" class="sidebar-link <?= $activeSection === 'dashboard' ? 'active' : '' ?>">
+            <a href="/<?= ADMIN_SLUG ?>" class="sidebar-link <?= $activeSection === 'dashboard' ? 'active' : '' ?>">
                 <i class="bi bi-grid-1x2-fill text-base"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="/radio/<?= ADMIN_SLUG ?>/profile" class="sidebar-link <?= $activeSection === 'profile' ? 'active' : '' ?>">
+            <a href="/<?= ADMIN_SLUG ?>/profile" class="sidebar-link <?= $activeSection === 'profile' ? 'active' : '' ?>">
                 <i class="bi bi-file-earmark-person-fill text-base"></i>
                 <span>Edit Profil</span>
             </a>
 
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Berita</p>
-            <a href="/radio/<?= ADMIN_SLUG ?>/news" class="sidebar-link <?= $activeSection === 'news' ? 'active' : '' ?>">
+            <a href="/<?= ADMIN_SLUG ?>/news" class="sidebar-link <?= $activeSection === 'news' ? 'active' : '' ?>">
                 <i class="bi bi-newspaper text-base"></i>
                 <span>Semua Berita</span>
             </a>
 
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Jadwal</p>
-            <a href="/radio/<?= ADMIN_SLUG ?>/calendar" class="sidebar-link <?= $activeSection === 'calendar' ? 'active' : '' ?>">
+            <a href="/<?= ADMIN_SLUG ?>/calendar" class="sidebar-link <?= $activeSection === 'calendar' ? 'active' : '' ?>">
                 <i class="bi bi-calendar3 text-base"></i>
                 <span>Semua Acara</span>
             </a>
 
             <?php if ($_SESSION['is_super_admin'] ?? false): ?>
                 <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">User</p>
-                <a href="/radio/<?= ADMIN_SLUG ?>/users" class="sidebar-link <?= $activeSection === 'users' ? 'active' : '' ?>">
+                <a href="/<?= ADMIN_SLUG ?>/users" class="sidebar-link <?= $activeSection === 'users' ? 'active' : '' ?>">
                     <i class="bi bi-people-fill text-base"></i>
                     <span>Kelola User</span>
                 </a>
             <?php endif; ?>
 
             <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-600 px-4 pt-4 pb-1">Sistem</p>
-            <a href="/radio/<?= ADMIN_SLUG ?>/settings" class="sidebar-link <?= $activeSection === 'settings' ? 'active' : '' ?>">
+            <a href="/<?= ADMIN_SLUG ?>/settings" class="sidebar-link <?= $activeSection === 'settings' ? 'active' : '' ?>">
                 <i class="bi bi-gear-fill text-base"></i>
                 <span>Pengaturan</span>
             </a>
@@ -95,7 +95,7 @@
                     <p class="text-sm font-semibold text-gray-900 dark:text-white truncate"><?= htmlspecialchars($_SESSION['username'] ?? 'Admin') ?></p>
                     <p class="text-xs text-gray-400"><?= ($_SESSION['is_super_admin'] ?? false) ? 'Administrator' : 'User' ?></p>
                 </div>
-                <a href="/radio/<?= ADMIN_SLUG ?>/logout" title="Logout" class="text-red-400 hover:text-red-600 transition-colors">
+                <a href="/<?= ADMIN_SLUG ?>/logout" title="Logout" class="text-red-400 hover:text-red-600 transition-colors">
                     <i class="bi bi-box-arrow-right text-lg"></i>
                 </a>
             </div>
@@ -110,7 +110,7 @@
                 <h1 class="text-xl font-bold text-gray-900 dark:text-white"><?= htmlspecialchars($title ?? 'User') ?></h1>
             </div>
             <div class="flex items-center gap-3">
-                <a href="/radio/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-1.5">
                     <i class="bi bi-box-arrow-up-right text-xs"></i> Lihat Web
                 </a>
                 <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:bg-gray-100 dark:hover:bg-white/10 transition-all text-gray-600 dark:text-gray-400">

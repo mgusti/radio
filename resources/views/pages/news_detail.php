@@ -1,9 +1,9 @@
 <article class="max-w-4xl mx-auto p-4 py-16" data-aos="fade-up" data-aos-duration="1000">
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8">
-        <a href="/radio/" class="hover:text-black dark:hover:text-white transition-colors">Beranda</a>
+        <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Beranda</a>
         <i class="bi bi-chevron-right text-[10px]"></i>
-        <a href="/radio/news" class="hover:text-black dark:hover:text-white transition-colors">Berita</a>
+        <a href="/news" class="hover:text-black dark:hover:text-white transition-colors">Berita</a>
         <i class="bi bi-chevron-right text-[10px]"></i>
         <span class="text-black dark:text-white font-medium truncate"><?= htmlspecialchars($news['title']) ?></span>
     </nav>
@@ -80,7 +80,7 @@
                     </button>
                 </div>
             </div>
-            <a href="/radio/news" class="bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all transform hover:-translate-x-2 flex items-center gap-2 shadow-lg">
+            <a href="/news" class="bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all transform hover:-translate-x-2 flex items-center gap-2 shadow-lg">
                 <i class="bi bi-arrow-left"></i> Kembali ke Berita
             </a>
         </div>

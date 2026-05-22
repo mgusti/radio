@@ -28,7 +28,7 @@ class NewsController {
     public function show() {
         $id = $_GET['id'] ?? null;
         if (!$id) {
-            header('Location: /radio/news');
+            header('Location: /news');
             exit;
         }
 
@@ -36,7 +36,7 @@ class NewsController {
         $news = $newsModel->find($id);
 
         if (!$news) {
-            header('Location: /radio/news');
+            header('Location: /news');
             exit;
         }
 
